@@ -1,0 +1,14 @@
+<UserControl x:Class="PureMp3.ConsoleView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:PureMp3">
+    <TextBox
+        x:Name="textboxOutput"
+        VerticalScrollBarVisibility="Auto"
+        IsReadOnly="True"
+        IsReadOnlyCaretVisible="True"
+        FontFamily="Courier New"
+        AllowDrop="False"
+        SnapsToDevicePixels="True"
+        MaxHeight="20000" />
+</UserControl>

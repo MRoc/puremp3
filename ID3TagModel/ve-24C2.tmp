@@ -1,0 +1,844 @@
+﻿using System;
+using System.Linq;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Text;
+using System.Windows.Media.Imaging;
+using BaseDocument;
+using ID3;
+
+namespace ID3TagModel
+{
+    public class TagVersionEnum : DocEnum
+    {
+        public TagVersionEnum()
+            : base(
+                BaseUtils.CollectionUtils.ToListOfStrings<ID3.Version>(ID3.Version.Versions),
+                ID3.Version.v2_3.ToString())
+        {
+        }
+
+        public ID3.Version ValueVersion
+        {
+            get
+            {
+                if (IsDefined)
+                {
+                    return ID3.Version.Versions[Value];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                Value = ID3.Version.IndexOfVersion(value);
+            }
+        }
+    }
+
+    public class TagModelItem : DocNode
+    {
+        protected Frame frame;
+
+        private DocObj<string> text = new DocObj<string>();
+
+        public Frame Frame
+        {
+            get { return frame; }
+            set
+            {
+                frame = value;
+                Load();
+            }
+        }
+        public string FrameId
+        {
+            get
+            {
+                return frame.FrameId;
+            }
+        }
+        public string FrameDescription
+        {
+            get
+            {
+                return frame.Description.Description;
+            }
+        }
+        public DocObj<string> Text
+        {
+            get
+            {
+                return text;
+            }
+        }
+
+        public virtual void Load()
+        {
+            text.ForceValue = Frame.Content.Text;
+        }
+        public virtual void Commit()
+        {
+            frame.Content.Text = text.Value;
+        }
+
+        public TagModel TagModel
+        {
+            get
+            {
+                IDocLeaf doc = ((IDocLeaf)this);
+                IDocLeaf par = doc.Parent.Parent;
+
+                return (TagModel)par;
+            }
+        }
+
+        public virtual bool IsEqual(TagModelItem other)
+        {
+            return Frame.Content.IsEqual(other.Frame.Content);
+        }
+    }
+    public class TagModelItemText : TagModelItem
+    {
+        public override bool IsEqual(TagModelItem other)
+        {
+            return Text.Value == other.Text.Value;
+        }
+    }
+    public class TagModelItemComment : TagModelItem
+    {
+        private static ReadOnlyCollection<string> languages = null;
+
+        private DocEnum language = new DocEnum(Languages);
+        private DocObj<string> description = new DocObj<string>();
+
+        public DocEnum Language
+        {
+            get
+            {
+                return language;
+            }
+        }
+        public DocObj<string> Description
+        {
+            get
+            {
+                return description;
+            }
+        }
+
+        public override bool IsEqual(TagModelItem other)
+        {
+            return Text.Value == other.Text.Value
+                && Description.Value == ((TagModelItemComment)other).Description.Value
+                && Language.Value == ((TagModelItemComment)other).Language.Value;
+        }
+
+        public override void Load()
+        {
+            base.Load();
+
+            Language.ForceTryValueStr = ((ID3.FrameContentComment)Frame.Content).Language;
+            description.ForceValue = ((ID3.FrameContentComment)Frame.Content).Description;
+        }
+        public override void Commit()
+        {
+            ((FrameContentComment)frame.Content).Description = description.Value;
+
+            if (language.IsDefined)
+            {
+                ((FrameContentComment)frame.Content).Language = language.ValueStr;
+            }
+
+            base.Commit();
+        }
+
+        private static ReadOnlyCollection<string> Languages
+        {
+            get
+            {
+                if (languages == null)
+                {
+                    languages = new ReadOnlyCollection<string>(
+                        ID3.LanguageTable.LanguagesCodes);
+                }
+
+                return languages;
+            }
+        }
+    }
+    public class TagModelItemPicture : TagModelItem
+    {
+        private static BitmapDecoder DecoderByMimeType(
+            ID3.FrameContentPicture.ImageMimeType mimeType, Stream inStream)
+        {
+            if (mimeType == ID3.FrameContentPicture.ImageMimeType.MimeTypePng)
+            {
+                return new PngBitmapDecoder(
+                    inStream,
+                    BitmapCreateOptions.PreservePixelFormat,
+                    BitmapCacheOption.Default);
+            }
+            else if (mimeType == ID3.FrameContentPicture.ImageMimeType.MimeTypeJpg)
+            {
+                return new JpegBitmapDecoder(
+                    inStream,
+                    BitmapCreateOptions.PreservePixelFormat,
+                    BitmapCacheOption.Default);
+            }
+
+            throw new Exception("Unknown mime type");
+        }
+        public static string BrowseForSaveByMimeType(
+            ID3.FrameContentPicture.ImageMimeType mimeType)
+        {
+            switch (mimeType)
+            {
+                case ID3.FrameContentPicture.ImageMimeType.MimeTypeJpg:
+                    return BaseControls.FileTools.BrowseSaveJpg();
+                case ID3.FrameContentPicture.ImageMimeType.MimeTypePng:
+                    return BaseControls.FileTools.BrowseSavePng();
+            }
+
+            throw new Exception("Unknown mime type");
+        }
+
+        protected BitmapFrame _bitmapFrame;
+
+        private DocEnum pictureType = new DocEnum(
+            ID3.FrameContentPicture.PictureTypes);
+
+        public ID3.FrameContentPicture.ImageMimeType MimeType
+        {
+            get
+            {
+                return ((ID3.FrameContentPicture)Frame.Content).MimeType;
+            }
+        }
+        public string InfoText
+        {
+            get
+            {
+                ID3.FrameContentPicture fcp = (ID3.FrameContentPicture)Frame.Content;
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append(fcp.MimeType);
+                sb.Append(" ");
+                sb.Append(Math.Round(_bitmapFrame.Width));
+                sb.Append("x");
+                sb.Append(Math.Round(_bitmapFrame.Height));
+
+                return sb.ToString();
+            }
+        }
+        public DocEnum PictureType
+        {
+            get
+            {
+                return pictureType;
+            }
+        }
+        public BitmapFrame FrameImage
+        {
+            get
+            {
+                return _bitmapFrame;
+            }
+        }
+        public override void Load()
+        {
+            base.Load();
+
+            ID3.FrameContentPicture fcp = (ID3.FrameContentPicture)Frame.Content;
+
+            BitmapDecoder decoder = DecoderByMimeType(fcp.MimeType, new MemoryStream(fcp.Content));
+
+            _bitmapFrame = decoder.Frames[0];
+
+            pictureType.ForceValue = fcp.PictureType;
+        }
+        public override void Commit()
+        {
+            ID3.FrameContentPicture fcp = (ID3.FrameContentPicture)Frame.Content;
+            
+            fcp.PictureType = pictureType.Value;
+            fcp.Description = Text.Value;
+        }
+
+        public void LoadFromFile(string filename)
+        {
+            ID3.FrameContentPicture fcp = (ID3.FrameContentPicture)Frame.Content;
+
+            fcp.MimeTypeText = FrameContentPicture.MimeTypeToMimeTypeText(
+                FrameContentPicture.TextToMimeType(filename));
+
+            fcp.Content = ID3.FileTools.LoadFileBinary(filename);
+
+            Load();
+
+            NotifyPropertyChanged("FrameImage");
+            NotifyPropertyChanged("InfoText");
+        }
+        public void SaveToFile(string filename)
+        {
+            ID3.FrameContentPicture fcp = (ID3.FrameContentPicture)Frame.Content;
+
+            ID3.FileTools.SaveFileBinary(
+                FrameContentPicture.CorrectFilenameByMimeType(MimeType, filename),
+                fcp.Content);
+        }
+    }
+    public class TagModelItemFactory
+    {
+        public static TagModelItem Create(ID3.Frame frame)
+        {
+            if (frame.Description.Type == ID3.FrameDesc.FrameType.Picture)
+            {
+                return DocNode.Create<TagModelItemPicture>();
+            }
+            else if (frame.Description.Type == ID3.FrameDesc.FrameType.Text)
+            {
+                return DocNode.Create<TagModelItemText>();
+            }
+            else if (frame.Description.Type == ID3.FrameDesc.FrameType.Comment)
+            {
+                return DocNode.Create<TagModelItemComment>();
+            }
+            else
+            {
+                return DocNode.Create<TagModelItem>();
+            }
+        }
+    }
+
+    public class TagModel : DocNode
+    {
+        private TagVersionEnum version = new TagVersionEnum();
+
+        private Mp3File file = new Mp3File();
+        private DocList<TagModelItem> items = new DocList<TagModelItem>();
+
+        private CreatableFrames createableFrames = new CreatableFrames();
+
+        public TagModel()
+        {
+            createableFrames.Model = this;
+        }
+
+        public string File
+        {
+            get
+            {
+                return file.File;
+            }
+            set
+            {
+                file.File = value;
+                UpdateItems();
+            }
+        }
+        public Tag Tag
+        {
+            get { return file.Tag; }
+        }
+        public DocList<TagModelItem> Items
+        {
+            get { return items; }
+        }
+        public TagVersionEnum Version
+        {
+            get { return version; }
+        }
+
+        public ObservableCollection<FrameDesc> CreatableFramesIds
+        {
+            get
+            {
+                return createableFrames.CreateableFrames;
+            }
+        }
+        public void CreateItemByFrameId(string frameId)
+        {
+            Frame frame = file.Tag.CreateFrameById(frameId);
+            Items.Add(CreateItemByFrame(frame));
+        }
+        public void DeleteItem(TagModelItem item)
+        {
+            file.Tag.RemoveFrame(item.Frame);
+            items.Remove(item);
+        }
+        public bool HasFrameById(string frameId)
+        {
+            return file.Tag.HasFrameById(frameId);
+        }
+
+        public void Save()
+        {
+            Commit();
+
+            try
+            {
+                file.Save();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+        }
+
+        private void Commit()
+        {
+            foreach (TagModelItem item in items)
+            {
+                item.Commit();
+            }
+        }
+        private TagModelItem CreateItemByFrame(Frame f)
+        {
+            TagModelItem item = TagModelItemFactory.Create(f);
+            item.Frame = f;
+            return item;
+        }
+
+        private void UpdateItems()
+        {
+            version.ValueVersion = Tag.DescriptionMap.GetVersion;
+
+            Items.Clear();
+
+            foreach (Frame frame in file.Tag.Frames)
+            {
+                Items.Add(CreateItemByFrame(frame));
+            }
+        }
+
+        public void ConvertToVersion(ID3.Version version)
+        {
+            ID3.VersionConverter.ConvertToVersion(Tag, version);
+            UpdateItems();
+        }
+    }
+    public class Mp3File : DocNode
+    {
+        public static string NotificationFile = "File";
+        public static string NotificationTag = "Tag";
+
+        private DocObj<string> file = new DocObj<string>();
+        private Tag _tag;
+
+        public Mp3File()
+        {
+        }
+        public Mp3File(string fileName)
+        {
+            File = fileName;
+        }
+
+        public string File
+        {
+            set
+            {
+                file.Value = value;
+
+                Load();
+
+                NotifyPropertyChanged(NotificationFile);
+            }
+            get
+            {
+                return file.Value;
+            }
+        }
+        public DocObj<string> FileObj
+        {
+            get
+            {
+                return file;
+            }
+        }
+        public Tag Tag
+        {
+            get { return _tag; }
+            set
+            {
+                _tag = value;
+                NotifyPropertyChanged(NotificationTag);
+            }
+        }
+
+        public void Save()
+        {
+            BaseDocument.Action action = new Mp3FileSaveAction(
+                TagTools.ReadTagV2Raw(new FileInfo(File)),
+                TagTools.TagV2ToRaw(_tag),
+                file.Value);
+
+            if (PathHelper.IsInHistoryTree(this))
+            {
+                History.Instance().Add(action);
+            }
+            else
+            {
+                action.Do();
+            }
+        }
+        private void Load()
+        {
+            Tag = null;
+
+            //try
+            {
+                if (TagTools.HasTagV2(new FileInfo(File)))
+                {
+                    Tag = TagTools.ReadTagV2(new FileInfo(File));
+                }
+            }
+            //catch (System.Exception e)
+            //{
+            //    Console.WriteLine(e.StackTrace);
+            //}
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + " " + file;
+        }
+    }
+    public class Mp3FileSaveAction : BaseDocument.Action
+    {
+        private byte[] _oldTag;
+        private byte[] _newTag;
+        private string _fileName;
+
+        public Mp3FileSaveAction(byte[] oldTag, byte[] newTag, string fileName)
+            : base(-1)
+        {
+            _oldTag = oldTag;
+            _newTag = newTag;
+            _fileName = fileName;
+        }
+
+        public override void Do()
+        {
+            TagTools.WriteTagV2Raw(_newTag, new FileInfo(_fileName));
+        }
+
+        public override void Undo()
+        {
+            TagTools.WriteTagV2Raw(_oldTag, new FileInfo(_fileName));
+        }
+
+        public override string ToString()
+        {
+            StringBuilder str = new StringBuilder();
+
+            str.Append(GetType().Name);
+            str.Append("(\"");
+            str.Append(_fileName);
+            str.Append("\")");
+
+            return str.ToString();
+        }
+    }
+    public class CreatableFrames
+    {
+        private readonly ObservableCollection<FrameDesc> createableFrames
+            = new ObservableCollection<FrameDesc>();
+        private TagModel model;
+
+        public ObservableCollection<FrameDesc> CreateableFrames
+        {
+            get { return createableFrames; }
+        }
+
+        public TagModel Model
+        {
+            get { return model; }
+            set
+            {
+                if (model != null)
+                {
+                    this.model.Items.CollectionChanged -= ChildrenChanged;
+                }
+
+                model = value;
+
+                if (model != null)
+                {
+                    this.model.Items.CollectionChanged += ChildrenChanged;
+                }
+
+                UpdateCreatableFrames();
+            }
+        }
+        private void ChildrenChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            UpdateCreatableFrames();
+        }
+        private void UpdateCreatableFrames()
+        {
+            createableFrames.Clear();
+
+            if (Model.File == null)
+            {
+                return;
+            }
+
+            Tag tag = Model.Tag;
+
+            if (tag != null)
+            {
+                Dictionary<string, FrameDesc>.KeyCollection frameIds =
+                    tag.DescriptionMap.FrameIds();
+
+                foreach (string frameId in frameIds)
+                {
+                    if (tag.DescriptionMap.DescriptionByID(frameId).Type
+                        == FrameDesc.FrameType.Text
+                        && !tag.HasFrameById(frameId))
+                    {
+                        createableFrames.Add(tag.DescriptionMap.DescriptionByID(frameId));
+                    }
+                }
+            }
+        }
+    }
+
+    public class TagModelList : DocNode
+    {
+        private DocList<TagModel> models = new DocList<TagModel>();
+        private DocObj<string> fileName = new DocObj<string>();
+        private TagVersionEnum version = new TagVersionEnum();
+
+        private bool conversionReEntryBlock = false;
+
+        private DocEnumMultiAdapter<TagModel> multiVersionAdapter
+            = new DocEnumMultiAdapter<TagModel>(delegate(object obj)
+                { return ((TagModel)obj).Version; });
+
+        public TagModelList()
+        {
+            multiVersionAdapter.List = models;
+            multiVersionAdapter.DocEnum = version;
+
+            version.Hook = VersionEnumHook;
+        }
+
+        public void VersionEnumHook(object sender, EventArgs e)
+        {
+            if (conversionReEntryBlock)
+            {
+                return;
+            }
+
+            conversionReEntryBlock = true;
+
+            DocEnum.DocObjCommand command = (DocEnum.DocObjCommand)e;
+            int newValue = command.NewValue;
+
+            version.ValueStr = models[0].Tag.DescriptionMap.GetVersion.ToString();
+            ConvertToVersion(ID3.Version.Versions[newValue]);
+
+            conversionReEntryBlock = false;
+        }
+
+        public DocList<TagModel> Models
+        {
+            get
+            {
+                return models;
+            }
+        }
+        public DocObj<string> FileName
+        {
+            get
+            {
+                return fileName;
+            }
+        }
+        public DocEnum Version
+        {
+            get
+            {
+                return version;
+            }
+        }
+
+        public bool HasModels
+        {
+            get
+            {
+                return models.Count > 0;
+            }
+        }
+
+        public void SetFiles(List<string> fileNames)
+        {
+            models.Clear();
+
+            fileNames.Sort();
+
+            //fileListHook.SuppressUpdates = true;
+
+            foreach (string fileName in fileNames)
+            {
+                Add(fileName);
+            }
+
+            //fileListHook.SuppressUpdates = false;
+
+            //UpdateChildren();
+        }
+        public void Add(string fileName)
+        {
+            if (Has(fileName))
+            {
+                throw new Exception("Can't add twice!");
+            }
+
+            TagModel model = DocNode.Create<TagModel>();
+
+            model.File = fileName;
+
+            models.Add(model);
+
+            UpdateFileName();
+            //UpdateVersion();
+        }
+        public void Remove(string fileName)
+        {
+            if (!Has(fileName))
+            {
+                throw new Exception("Not added before!");
+            }
+
+            Models.Remove(Get(fileName));
+        }
+        public bool Has(string fileName)
+        {
+            foreach (TagModel model in Models)
+            {
+                if (model.File == fileName)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        public TagModel Get(string fileName)
+        {
+            foreach (TagModel model in Models)
+            {
+                if (model.File == fileName)
+                {
+                    return model;
+                }
+            }
+
+            return null;
+        }
+
+        public void ConvertToHighestVersion()
+        {
+            List<Tag> tags = Tags;
+
+            VersionConverter.ConvertToVersion(
+                tags, VersionConverter.HighestVersion(tags));
+        }
+        public void ConvertToVersion(ID3.Version version)
+        {
+            List<TagModel> tmpModels = new List<TagModel>();
+            foreach (TagModel tm in Models)
+            {
+                tmpModels.Add(tm);
+            }
+
+            Models.Clear();
+
+            foreach (TagModel tm in tmpModels)
+            {
+                tm.ConvertToVersion(version);
+            }
+
+            foreach (TagModel tm in tmpModels)
+            {
+                Models.Add(tm);
+            }
+        }
+
+        public List<Tag> Tags
+        {
+            get
+            {
+                List<Tag> tags = new List<Tag>();
+                foreach (TagModel model in models)
+                {
+                    tags.Add(model.Tag);
+                }
+                return tags;
+            }
+        }
+
+        public void Save()
+        {
+            foreach (TagModel tagModel in models)
+            {
+                tagModel.Save();
+            }
+        }
+
+        public int IndexOfTagModelItemByFrameId(TagModelItem toSearchFor)
+        {
+            int i = 0;
+
+            foreach (TagModel tagModel in Models)
+            {
+                foreach (TagModelItem tagModelItem in tagModel.Items)
+                {
+                    if (tagModelItem == toSearchFor)
+                    {
+                        return i;
+                    }
+
+                    if (tagModelItem.FrameId == toSearchFor.FrameId)
+                    {
+                        i++;
+                    }
+                }
+            }
+
+            throw new Exception("Query for non-existing frame");
+        }
+
+        private void UpdateFileName()
+        {
+            if (models.Count == 0)
+            {
+                FileName.Value = "";
+            }
+            else if (models.Count == 1)
+            {
+                FileName.Value = models[0].File;
+            }
+            else
+            {
+                FileName.Value = "*";
+            }
+        }
+        //private void UpdateVersion()
+        //{
+        //    if (models.Count > 0)
+        //    {
+        //        version.ValueStr = models[0].Tag.DescriptionMap.GetVersion.ToString();
+        //        ConvertToVersion(ID3.Version.Versions[version.Value]);
+        //    }
+        //}
+    }
+}

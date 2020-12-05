@@ -1,0 +1,183 @@
+﻿<ItemsControl x:Class="PureMp3.MultiTagItemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:PureMp3"
+    xmlns:model="clr-namespace:ID3TagModel;assembly=ID3TagModel"
+    xmlns:controls="clr-namespace:CoreControls;assembly=CoreControls"
+    xmlns:text="clr-namespace:CoreDocument.Text;assembly=CoreDocument"
+    ScrollViewer.CanContentScroll="False">
+    <ItemsControl.Resources>
+        <DataTemplate DataType="{x:Type model:TagModelItemPicture}">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TagModelItemPictureDescription}" />
+                <TextBox
+                    Name="mainTextField"
+                    Text="{Binding Path=Text.Value, UpdateSourceTrigger=PropertyChanged}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="1"
+                    Grid.Row="0" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TagModelItemPictureType}" />
+                <ComboBox
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    DataContext="{Binding Path=PictureType}"
+                    ItemsSource="{Binding Path=Items}"
+                    SelectedValue="{Binding Path=ValueStr}" />
+                <Button
+                    Command="{Binding Path=DeleteCommand}"
+                    TabIndex="-1"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Content="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TagModelItemDelete}" />
+                <StackPanel
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Orientation="Vertical">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Stretch"
+                        Text="{Binding Path=InfoText}" />
+                    <Button
+                        Command="{Binding Path=LoadPictureCommand}"
+                        Content="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TagModelItemPictureImport}" />
+                    <Button
+                        Command="{Binding Path=SavePictureCommand}"
+                        Content="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TagModelItemPictureExport}" />
+                </StackPanel>
+                <Image
+                    HorizontalAlignment="Left"
+                    Source="{Binding Path=Image}"
+                    MaxWidth="600"
+                    MaxHeight="200"
+                    Margin="3"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    RenderOptions.BitmapScalingMode="HighQuality" />
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=IsTemplateItem.Value}" Value="true">
+                    <Setter TargetName="mainTextField" Property="Background" Value="{DynamicResource brushBackground}"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type model:TagModelItemText}">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox
+                    Name="mainTextField"
+                    Text="{Binding Path=Text.Value, UpdateSourceTrigger=PropertyChanged}"
+                    Grid.Column="0" />
+                <Button
+                    Command="{Binding Path=DeleteCommand}"
+                    TabIndex="-1"
+                    Grid.Column="1"
+                    Content="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TagModelItemDelete}" />
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=IsTemplateItem.Value}" Value="true">
+                    <Setter TargetName="mainTextField" Property="Background" Value="{DynamicResource brushBackground}"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type model:TagModelItemComment}">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock     
+                    VerticalAlignment="Center"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TagModelItemCommentDescription}" />
+                <TextBox
+                    Name="textfield1"
+                    Text="{Binding Path=Description.Value, UpdateSourceTrigger=PropertyChanged}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="1"
+                    VerticalAlignment="Center"
+                    Grid.Row="0" />
+                <Button
+                    Command="{Binding Path=DeleteCommand}"
+                    TabIndex="-1"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Content="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TagModelItemDelete}" />
+                <TextBlock  
+                    VerticalAlignment="Center"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TagModelItemCommentLanguage}" />
+                <ComboBox
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    DataContext="{Binding Path=Language}"
+                    ItemsSource="{Binding Path=Items}"
+                    SelectedValue="{Binding Path=TryValueStr}"/>
+                <TextBox
+                    Name="textfield2"
+                    Text="{Binding Path=Text.Value, UpdateSourceTrigger=PropertyChanged}"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="2"
+                    TextWrapping="Wrap"
+                    MinLines="5" />
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=IsTemplateItem.Value}" Value="true">
+                    <Setter TargetName="textfield1" Property="Background" Value="{DynamicResource brushBackground}"/>
+                    <Setter TargetName="textfield2" Property="Background" Value="{DynamicResource brushBackground}"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type model:TagModelItem}">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox
+                    Name="textfield1"
+                    Text="{Binding Path=Text.Value, UpdateSourceTrigger=PropertyChanged}"
+                    Grid.Column="0" />
+                <Button
+                    Command="{Binding Path=DeleteCommand}"
+                    TabIndex="-1"
+                    Grid.Column="1"
+                    Content="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TagModelItemDelete}" />
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=IsTemplateItem.Value}" Value="true">
+                    <Setter TargetName="textfield1" Property="Background" Value="{DynamicResource brushBackground}"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </ItemsControl.Resources>
+</ItemsControl>

@@ -1,0 +1,201 @@
+﻿<UserControl x:Class="PureMp3.Player"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:text="clr-namespace:CoreDocument.Text;assembly=CoreDocument"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="400">
+    <StackPanel Orientation="Vertical">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="55"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button
+                x:Name="buttonStop"
+                DataContext="{Binding Path=PlayerCommands}"
+                Command="{Binding Path=StopCommand}"
+                MinWidth="22"
+                HorizontalAlignment="Left"
+                Width="22">
+                <Path
+                    Width="9"
+                    Height="9"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="2, 2, 2, 2"
+                    SnapsToDevicePixels="False" 
+                    Stroke="{DynamicResource controlGlyph}"
+                    StrokeThickness="1"
+                    StrokeLineJoin="Round"
+                    Data="M 0 0 L 9 0 L 9 9 L 0 9 L 0 0" />
+            </Button>
+            <Button
+                x:Name="buttonPause"
+                DataContext="{Binding Path=PlayerCommands}"
+                Command="{Binding Path=PauseCommand}"
+                Grid.Column="1"
+                MinWidth="22">
+                <StackPanel Orientation="Horizontal" Margin="2, 0, 2, 0">
+                    <Path
+                        Margin="3, 0, 1, 0"
+                        Width="1"
+                        Height="11"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        SnapsToDevicePixels="False" 
+                        Stroke="{DynamicResource controlGlyph}"
+                        StrokeThickness="1"
+                        StrokeLineJoin="Round"
+                        Data="M 0 0 L 0 11" />
+                    <Path
+                        Margin="1, 0, 3, 0"
+                        Width="1"
+                        Height="11"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        SnapsToDevicePixels="False" 
+                        Stroke="{DynamicResource controlGlyph}"
+                        StrokeThickness="1"
+                        StrokeLineJoin="Round"
+                        Data="M 0 0 L 0 11" />
+                </StackPanel>
+            </Button>
+            <Button
+                x:Name="buttonPrevious"
+                DataContext="{Binding Path=PlayerCommands}"
+                Command="{Binding Path=PreviousCommand}"
+                Grid.Column="2" 
+                MinWidth="22">
+                <StackPanel Orientation="Horizontal" Margin="2, 0, 2, 0">
+                    <Path
+                        Width="2"
+                        Height="11"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        SnapsToDevicePixels="False" 
+                        Stroke="{DynamicResource controlGlyph}"
+                        StrokeThickness="1"
+                        StrokeLineJoin="Round"
+                        Data="M 0 0 L 0 11" />
+                    <Path
+                        Width="7"
+                        Height="11"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        SnapsToDevicePixels="False" 
+                        Stroke="{DynamicResource controlGlyph}"
+                        StrokeThickness="1"
+                        StrokeLineJoin="Round"
+                        Data="M 0 5 L 7 0 L 7 11 L 0 5" />
+                </StackPanel>
+            </Button>
+            <Button
+                x:Name="buttonPlay"
+                DataContext="{Binding Path=PlayerCommands}"
+                Command="{Binding Path=PlayCommand}"
+                Grid.Column="3" 
+                MinWidth="22">
+                <Path
+                    Width="11"
+                    Height="11"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="2, 2, 2, 2"
+                    SnapsToDevicePixels="False" 
+                    Stroke="{DynamicResource controlGlyph}"
+                    StrokeThickness="1"
+                    StrokeLineJoin="Round"
+                    Data="M 0 0 L 0 11 L 11 5 L 0 0" />
+            </Button>
+            <Button
+                x:Name="buttonNext"
+                DataContext="{Binding Path=PlayerCommands}"
+                Command="{Binding Path=NextCommand}"
+                Grid.Column="4" 
+                MinWidth="22">
+                <StackPanel Orientation="Horizontal" Margin="2, 0, 2, 0">
+                    <Path
+                        Width="9"
+                        Height="11"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        SnapsToDevicePixels="False" 
+                        Stroke="{DynamicResource controlGlyph}"
+                        StrokeThickness="1"
+                        StrokeLineJoin="Round"
+                        Data="M 0 0 L 7 5 L 0 11 L 0 0" />
+                    <Path
+                        Width="2"
+                        Height="11"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        SnapsToDevicePixels="False" 
+                        Stroke="{DynamicResource controlGlyph}"
+                        StrokeThickness="1"
+                        StrokeLineJoin="Round"
+                        Data="M 0 0 L 0 11" />
+                </StackPanel>
+            </Button>
+            <Label
+                Grid.Column="5"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Width="55"
+                Foreground="{DynamicResource controlText}"
+                Content="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=PlayerLabelPosition}" />
+            <Slider
+                Grid.Column="6"
+                Orientation="Horizontal"
+                x:Name="sliderPosition"
+                IsMoveToPointEnabled="True"
+                DataContext="{Binding Path=PlayerModel.Position}"
+                Maximum="{Binding Path=MediaLength.Value}"
+                Value="{Binding Path=Position.Value}"
+                VerticalAlignment="Center"/>
+            <Label
+                Grid.Column="7"
+                VerticalAlignment="Center"
+                Foreground="{DynamicResource controlText}"
+                Content="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=PlayerLabelVolume}" />
+            <Slider
+                Grid.Column="8"
+                Orientation="Horizontal"
+                x:Name="sliderVolume"
+                DataContext="{Binding Path=PlayerModel.Volume}"
+                IsMoveToPointEnabled="True"
+                Value="{Binding Path=Value}"
+                VerticalAlignment="Center"/>
+            <Label
+                Grid.Column="9"
+                x:Name="labelPosition"
+                Foreground="{DynamicResource controlText}"
+                DataContext="{Binding Path=PlayerModel.CurrentPosition}"
+                Content="{Binding Path=Value}"
+                VerticalAlignment="Center" />
+        </Grid>
+        <DockPanel>
+            <Label
+                x:Name="labelBitrate"
+                Foreground="{DynamicResource controlText}"
+                DockPanel.Dock="Right"
+                DataContext="{Binding Path=PlayerModel.CurrentBitrate}"
+                Content="{Binding Path=Value}" />
+            <Label
+                x:Name="labelTitle"
+                Foreground="{DynamicResource controlText}"
+                VerticalContentAlignment="Center"
+                DataContext="{Binding Path=PlayerModel.CurrentTrack}"
+                Content="{Binding Path=Value}" />
+        </DockPanel>
+    </StackPanel>
+</UserControl>

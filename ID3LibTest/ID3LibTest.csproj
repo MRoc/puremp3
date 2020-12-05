@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A8A379F4-7D44-4388-AD33-A90ACB5EF47E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ID3LibTest</RootNamespace>
+    <AssemblyName>ID3LibTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoreDocument\CoreDocument.csproj">
+      <Project>{6291E19F-1D4D-4C17-9379-4781F3852200}</Project>
+      <Name>CoreDocument</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreLogging\CoreLogging.csproj">
+      <Project>{28BA16CE-E086-45CB-8DE4-991C71AB7A54}</Project>
+      <Name>CoreLogging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreTest\CoreTest.csproj">
+      <Project>{264A654E-E085-4E23-9565-9153AAE02B88}</Project>
+      <Name>CoreTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreThreading\CoreThreading.csproj">
+      <Project>{D2EA959B-09F3-4FE6-854A-B03B2E3C0AE8}</Project>
+      <Name>CoreThreading</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreUtils\CoreUtils.csproj">
+      <Project>{EDB4D739-8A14-4B78-A227-6ACCFAF0F9EE}</Project>
+      <Name>CoreUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreVirtualDrive\CoreVirtualDrive.csproj">
+      <Project>{D48088EA-BF0E-45EB-B358-9F842B07CAB2}</Project>
+      <Name>CoreVirtualDrive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreWeb\CoreWeb.csproj">
+      <Project>{6D554D94-F1FB-409C-971F-6F1AE9FC3B77}</Project>
+      <Name>CoreWeb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ID3CoverSearch\ID3CoverSearch.csproj">
+      <Project>{062397BD-81E5-49B8-86BC-C949A6864791}</Project>
+      <Name>ID3CoverSearch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ID3Discogs\ID3Discogs.csproj">
+      <Project>{3CD9D27F-A179-402E-B8D3-BD11617E8830}</Project>
+      <Name>ID3Discogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ID3Freedb\ID3Freedb.csproj">
+      <Project>{1D008CB4-D004-460C-87FC-EDDE2A437BFB}</Project>
+      <Name>ID3Freedb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ID3Lib\ID3Lib.csproj">
+      <Project>{B4A34633-812B-47FD-A20A-625F30A54745}</Project>
+      <Name>ID3Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ID3MusicBrainz\ID3MusicBrainz.csproj">
+      <Project>{6FD2A9DF-E1AA-4E17-8E98-0760DC812402}</Project>
+      <Name>ID3MusicBrainz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ID3Player\ID3Player.csproj">
+      <Project>{17B89E38-3E65-41D8-8179-E11C7509C794}</Project>
+      <Name>ID3Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ID3TagModel\ID3TagModel.csproj">
+      <Project>{5C91C656-F0A5-4902-B225-58944A9D444C}</Project>
+      <Name>ID3TagModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

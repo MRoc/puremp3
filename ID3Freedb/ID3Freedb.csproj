@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1D008CB4-D004-460C-87FC-EDDE2A437BFB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ID3Freedb</RootNamespace>
+    <AssemblyName>ID3Freedb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DiscID.cs" />
+    <Compile Include="FreedbAccess.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="FreedbAPI.cs" />
+    <Compile Include="MultipleItemChooser.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.cs" />
+    <Compile Include="TestID3Freedb.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoreLogging\CoreLogging.csproj">
+      <Project>{28BA16CE-E086-45CB-8DE4-991C71AB7A54}</Project>
+      <Name>CoreLogging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreTest\CoreTest.csproj">
+      <Project>{264A654E-E085-4E23-9565-9153AAE02B88}</Project>
+      <Name>CoreTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreUtils\CoreUtils.csproj">
+      <Project>{EDB4D739-8A14-4B78-A227-6ACCFAF0F9EE}</Project>
+      <Name>CoreUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreVirtualDrive\CoreVirtualDrive.csproj">
+      <Project>{D48088EA-BF0E-45EB-B358-9F842B07CAB2}</Project>
+      <Name>CoreVirtualDrive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreWeb\CoreWeb.csproj">
+      <Project>{6D554D94-F1FB-409C-971F-6F1AE9FC3B77}</Project>
+      <Name>CoreWeb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ID3MediaFileHeader\ID3MediaFileHeader.csproj">
+      <Project>{19B4B97E-639C-4D90-9F6A-20D37D225D8D}</Project>
+      <Name>ID3MediaFileHeader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ID3WebQueryBase\ID3WebQueryBase.csproj">
+      <Project>{C7D8F273-3127-4752-9C5D-A4942E892F6E}</Project>
+      <Name>ID3WebQueryBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

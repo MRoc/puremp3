@@ -1,0 +1,167 @@
+﻿<UserControl x:Class="PureMp3.PreferencesCategoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:CoreControls;assembly=CoreControls"
+             xmlns:controls2="clr-namespace:CoreControls.Controls;assembly=CoreControls"
+             xmlns:src="clr-namespace:PureMp3" 
+             xmlns:model="clr-namespace:PureMp3.Model" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <DataTemplate x:Key="BoolTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label
+                        Grid.Column="0"
+                        Content="{Binding Path=DisplayName}"
+                        Foreground="{DynamicResource controlText}" />
+                <CheckBox
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        DataContext="{Binding Path=Item}"
+                        IsChecked="{Binding Path=Value}" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="StringTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label
+                        Grid.Column="0"
+                        Content="{Binding Path=DisplayName}"
+                        Foreground="{DynamicResource controlText}" />
+                <TextBox
+                        Grid.Column="1"
+                        MinWidth="300"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        DataContext="{Binding Path=Item}"
+                        Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="EnumTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label
+                        Grid.Column="0"
+                        Content="{Binding Path=DisplayName}"
+                        Foreground="{DynamicResource controlText}" />
+                <ComboBox
+                        Grid.Column="1"
+                        MinWidth="100"
+                        MaxWidth="100"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        DataContext="{Binding Path=Item}"
+                        ItemsSource="{Binding Path=Items}"
+                        SelectedValue="{Binding Path=ValueStr}" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="DirectoryTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="170" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label
+                        Grid.Column="0"
+                        Content="{Binding Path=DisplayName}"
+                        Foreground="{DynamicResource controlText}" />
+                <controls2:DirectoryTextBox
+                        Grid.Column="1"
+                        MinWidth="300"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        DataContext="{Binding Path=Item}"
+                        Directory="{Binding Path=Value}" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ListOfBoolsTemplate">
+            <Expander Header="{Binding Path=DisplayName}">
+                <Expander.Content>
+                    <ItemsControl
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            DataContext="{Binding Path=Item}"
+                            ItemsSource="{Binding}"
+                            MinHeight="210"
+                            MaxHeight="210">
+                        <ItemsControl.Template>
+                            <ControlTemplate TargetType="{x:Type ItemsControl}">
+                                <ScrollViewer
+                                    CanContentScroll="True"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled">
+                                    <ItemsPresenter></ItemsPresenter>
+                                </ScrollViewer>
+                            </ControlTemplate>
+                        </ItemsControl.Template>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="300" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        Content="{Binding Path=DisplayName}"
+                                        Foreground="{DynamicResource controlText}" />
+                                    <CheckBox
+                                        Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        DataContext="{Binding Path=Item}"
+                                        IsChecked="{Binding Path=Value}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Expander.Content>
+            </Expander>
+        </DataTemplate>
+        <src:PreferencesItemTemplateSelector x:Key="ItemTemplateSelector" 
+                BoolTemplate="{StaticResource BoolTemplate}"
+                EnumTemplate="{StaticResource EnumTemplate}"
+                StringTemplate="{StaticResource StringTemplate}"
+                DirectoryTemplate="{StaticResource DirectoryTemplate}"
+                ListOfBoolsTemplate="{StaticResource ListOfBoolsTemplate}" />
+    </UserControl.Resources>
+
+    <Expander
+        Name="mainExpander"
+        HorizontalContentAlignment="Stretch"
+        HorizontalAlignment="Stretch">
+        <Expander.Header>
+            <Label
+                Content="{Binding Path=Category}"
+                Foreground="{DynamicResource controlText}" />
+        </Expander.Header>
+        <Expander.Content>
+            <ItemsControl
+                ItemsSource="{Binding Path=Items}"
+                ItemTemplateSelector="{StaticResource ItemTemplateSelector}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </Expander.Content>
+    </Expander>
+</UserControl>

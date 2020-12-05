@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Items>
+  <Item Id="RedoHelp">
+    Redo last change. Redo includes changes all changes done to data may it be
+    through editor, batch process or changeing selected folder.
+  </Item>
+  <Item Id="UndoHelp">
+    Undo last change. Undo includes changes all changes done to data may it be
+    through editor, batch process or changeing selected folder.
+  </Item>
+  <Item Id="CancelHelp">
+    Cancel ongoing batch processing.
+  </Item>
+  <Item Id="IsWorkerThreadActive">
+    Indicates ongoing filesystem operations that happen in the background.
+  </Item>
+
+
+  <!-- Document ============================================================= -->
+
+  <Item Id="FileTreeModelHelp">
+    The browser shows all mounted disks and folders. Selecting a folder with left
+    mouse click loads contained MP3 files into the file list. A context menu offering
+    rich batch commands opens on right mouse click.
+  </Item>
+  <Item Id="TagModelListHelp">
+    The file list shows all MP3 files found in the selected folder. Files can be
+    single- and multiselected. A combined view of all information found in the
+    files is shown in the multi tag editor below. Double click on a file starts
+    playback. Dropping Jpeg or PNG picture adds an album cover to each file.
+  </Item>
+  <Item Id="MultiTagModelHelp">
+    The multi tag editor shows the combined information of all selected MP3 files.
+    Information may be text, picture or binary. Text and pictures can be edited
+    on a single file or all at once.
+  </Item>
+  <Item Id="MultiTagModelItemHelp">
+    The multi tag view shows all information of a certain type from all selected
+    MP3s. Editing modifies all frames in all selected MP3s. To see the individual
+    per-file information, click the arrow to open details.
+  </Item>
+  <Item Id="TagModelItemHelp">
+    Shows a single piece of information of a certain type in a single MP3. Edits
+    are only made to the owning file.
+  </Item>  
+
+  <Item Id="DocumentSaveHelp">
+    Save changes done. Changes include change of version, adding, removing and
+    editing a frame.
+  </Item>
+  <Item Id="TagModelListVersionHelp">
+    Change the tag version of all selected MP3 files. As most spread and supported,
+    version 2.3 is recommended.
+  </Item>
+  <Item Id="MultiTagEditorAddHelp">
+    Add a new type of information to the selected MP3 files.
+  </Item>
+  <Item Id="MultiTagModelIsFixedHelp">
+    Offers a simple view with only the main information. NOTE: Does not change the
+    actual data.
+  </Item>
+
+  <Item Id="MultiTagModelItemDuplicateHelp">
+    Create/duplicate the the type of information so it is contained in each selected
+    MP3 file. Useful for editing many files, starting with one and duplicating later.
+  </Item>
+  <Item Id="MultiTagModelItemDeleteHelp">
+    Delete the type of information from all selected MP3 files.
+  </Item>
+  <Item Id="TagModelItemDeleteTagModelItemHelp">
+    Delete the single piece of information from the owning MP3 file.
+  </Item>
+  <Item Id="LoadPicture">
+    Load an album cover from a picture on disc.
+  </Item>
+  <Item Id="SavePicture">
+    Save album cover as picture on disc.
+  </Item>
+
+  <!-- Player ============================================================= -->
+  <Item Id="PlayerCommandsPrevHelp">
+    Play previously selected MP3 file.
+  </Item>
+  <Item Id="PlayerCommandsPlayHelp">
+    Play currently selected MP3 file.
+  </Item>
+  <Item Id="PlayerCommandsNextHelp">
+    Play next selected MP3 file.
+  </Item>
+  <Item Id="PlayerCommandsPauseHelp">
+    Pause playback. Resume with pressing play.
+  </Item>
+  <Item Id="PlayerCommandsStopHelp">
+    Stop playpack.
+  </Item>
+  <Item Id="PlayerPositionHelp">
+    The current playback position.
+  </Item>
+  <Item Id="PlayerVolumeHelp">
+    Set playback volume.
+  </Item>
+  <Item Id="PlayerCurrentTrackHelp">
+    Shows artist and title of the currently played MP3 file.
+  </Item>
+  <Item Id="PlayerCurrentBitrateHelp">
+    Shows the bitrate of the currently played MP3 file. For VBR, the actual
+    bitrate maybe vary.
+  </Item>
+  <Item Id="PlayerCurrentPositionHelp">
+    Shows position of played MP3 file in Hours:Minutes:Second.
+  </Item>
+
+  
+  <!-- Library ================================================================= -->
+
+  <Item Id="Library">
+    The library shows all MP3 files found in your library folder. The folder is
+    scanned in the background when the application starts or the library path
+    is changed.
+  </Item>
+
+  <Item Id="LibrarySearch">
+    Search:
+  </Item>
+  <Item Id="LibrarySearchStringHelp">
+    Search for words in all MP3 files found in your library. By default, the
+    words are 'OR'-ed. Words enclosed by "" are 'AND'-ed.
+  </Item>
+
+  <Item Id="LibraryIsRefreshing">
+    Indicates if the library is currently refreshed in background.
+  </Item>
+
+  <Item Id="Artist">Artist</Item>
+  <Item Id="Album">Album</Item>
+  <Item Id="Title">Title</Item>
+  <Item Id="TrackNumber">Index</Item>
+  <Item Id="PartOfSet">Part</Item>
+  <Item Id="ReleaseYear">Year</Item>
+  <Item Id="Bitrate">Bitrate</Item>
+  <Item Id="ContentType">Type</Item>
+  <Item Id="Filename">Filename</Item>
+
+
+  <!-- Preferences ============================================================= -->
+    
+  <Item Id="PreferencesCommon">
+    Offers common program settings.
+  </Item>
+  <Item Id="PreferencesCommonCommon">Common</Item>
+  <Item Id="PreferencesCommonLibraryPath">Library Folder</Item>
+  <Item Id="PreferencesCommonLibraryPathHelp">
+    The library folder is scanned in background for MP3 files that appear
+    in the library tab. This folder also serves as target for the album to
+    library command.
+  </Item>
+  <Item Id="PreferencesCommonVersion">Version</Item>
+  <Item Id="PreferencesCommonVersionHelp">
+    Chose preferred tag version. This version is used whenever the program
+    attaches information to an MP3 file. As most spread and supported,
+    version 2.3 is recommended.
+  </Item>
+  <Item Id="PreferencesCommonFilenamePattern">Filename pattern</Item>
+  <Item Id="PreferencesCommonFilenamePatternHelp">
+    Pattern that defines how filenames are created from tag information.
+    Supported case-sensitive keywords are: 'Artist', 'Album', 'Title',
+    'TrackNumber', 'ReleaseYear', 'PartOfSet', 'ContentType', 'Composer',
+    'BandOrchestraAccompaniment', 'ConductorPerformer', 'InterpretedRemixedModified',
+    'Publisher' and 'Encoder'. Optional parts may be placed in curly brackets
+    '{' and '}'. NOTE: The command only works on folders regarded as album.
+  </Item>
+  <Item Id="PreferencesCommonDirectoryPattern">Foldername pattern</Item>
+  <Item Id="PreferencesCommonDirectoryPatternHelp">
+    Pattern that defines how foldernames are created from tag information.
+    Supported case-sensitive keywords are: 'Artist', 'Album', 'Title',
+    'TrackNumber' and 'ReleaseYear'. Optional parts may be placed in
+    curly brackets '{' and '}'.
+    NOTE: The command only works on folders regarded as album.
+  </Item>
+  <Item Id="PreferencesCommonTrackNumberPattern">Tracknumber pattern</Item>
+  <Item Id="PreferencesCommonTrackNumberPatternHelp">
+    Pattern how to create track numbers. The first digits define the track index.
+    They MAYBE followed by a separator which then MUST be followed by digits for
+    the number of tracks.
+    The number of digits defines how many leading zeros are added to the numbers.
+    E.g. pattern '0' on an album with two tracks would create the '1' for the first
+    and '2' for the second track. The pattern '00/0' would create '01/2' for the
+    first and '02/2' for the second.
+  </Item>
+  <Item Id="PreferencesCommonShowHelpView">Show help view</Item>
+  <Item Id="PreferencesCommonShowHelpViewHelp">
+    Show/hide the help view this text is located in 8-)
+  </Item>
+  <Item Id="PreferencesCommonVerbose">Verbose console output</Item>
+  <Item Id="PreferencesCommonVerboseHelp">
+    Enable more detailed information shown in console for executed commands.
+  </Item>
+
+  <Item Id="PreferencesAlbumRecognition">
+    Album Recognition
+  </Item>
+  <Item Id="PreferencesAlbumRecognitionHelp">
+    Choose what information must be in all MP3 files in a folder to be
+    recognized as tagged album.
+  </Item>
+  <Item Id="PreferencesAlbumRecognitionArtistRequired">
+    Artist required
+  </Item>
+  <Item Id="PreferencesAlbumRecognitionArtistRequiredHelp">
+    Set if the same artist name must be set in all files to be recognized as album.
+  </Item>
+  <Item Id="PreferencesAlbumRecognitionAlbumRequired">
+    Album required
+  </Item>
+  <Item Id="PreferencesAlbumRecognitionAlbumRequiredHelp">
+    Set if the same album name must be set in all files to be recognized as album.
+  </Item>
+  <Item Id="PreferencesTitleRecognitionTitleRequired">
+    Title required
+  </Item>
+  <Item Id="PreferencesTitleRecognitionTitleRequiredHelp">
+    Set if a title must be set in all files to be recognized as album.
+  </Item>
+  <Item Id="PreferencesTrackNumberRecognitionTrackNumberRequired">
+    Tracknumber required
+  </Item>
+  <Item Id="PreferencesTrackNumberRecognitionTrackNumberRequiredHelp">
+    Set if all files must have a unique tracknumber to be recognized as album.
+  </Item>
+  <Item Id="PreferencesYearRecognitionYearRequired">
+    Year required
+  </Item>
+  <Item Id="PreferencesYearRecognitionYearRequiredHelp">
+    Set if all files need to have a release year set to be recognized as album.
+  </Item>
+  <Item Id="PreferencesAlbumRecognitionMinimumTracksRequired">
+    Minimum tracks required
+  </Item>
+  <Item Id="PreferencesAlbumRecognitionMinimumTracksRequiredHelp">
+    The minimum number of MP3 files required in a folder to be recognized as album.
+  </Item>
+  
+  <Item Id="PreferencesPreparse">Rewrite Tags Command</Item>
+  <Item Id="PreferencesPreparseHelp">
+    The command works on folders and recursevily re-writes all MP3 files found.
+    It combines several often used operations like text format correction and
+    version conversion.
+  </Item>
+  <Item Id="PreferencesPreparseTextTrim">Text trim</Item>
+  <Item Id="PreferencesPreparseTextTrimHelp">
+    Remove whitespace from texts like '  FooBar ' to 'FooBar'.
+  </Item>
+  <Item Id="PreferencesPreparseTextBreakCamelCase">Text break camel case</Item>
+  <Item Id="PreferencesPreparseTextBreakCamelCaseHelp">
+    Breaks CamelCase texts like 'FooBar' to 'Foo Bar'.
+  </Item>
+  <Item Id="PreferencesPreparseTextBreakUnderscores">Text break underscore</Item>
+  <Item Id="PreferencesPreparseTextBreakUnderscoresHelp">
+    Breaks underscored texts like 'Foo_Bar' to 'Foo Bar'.
+  </Item>
+  <Item Id="PreferencesPreparseTextFirstCharUpper">Text first character upper</Item>
+  <Item Id="PreferencesPreparseTextFirstCharUpperHelp">
+    Changes the first letter of each word to upper case like 'foo bar' to 'Foo Bar'.
+  </Item>
+  <Item Id="PreferencesPreparseWordList">Wordlist</Item>
+  <Item Id="PreferencesPreparseWordListHelp">
+    Words that should not be changed by the 'first char upper'-command. Instead, they
+    are corrected.
+  </Item>
+  <Item Id="PreferencesPreparseCreateTrackNumbers">Create track numbers</Item>
+  <Item Id="PreferencesPreparseCreateTrackNumbersHelp">
+    Create a track number for each track. The track number is taken from the position
+    of the file in the file list.
+  </Item>
+  <Item Id="PreferencesPreparseDropUnwantedFrames">Drop unwanted frames</Item>
+  <Item Id="PreferencesPreparseDropUnwantedFramesHelp">
+    Deletes unwanted frames. Frames that should be not dropped can be marked
+    below.
+  </Item>
+  <Item Id="PreferencesPreparseFramesToKeep">Frames to keep</Item>
+  <Item Id="PreferencesPreparseFramesToKeepHelp">
+    Set frames that should NOT be dropped. This list is per version!
+  </Item>
+  <Item Id="PreferencesPreparseDropCodecs">Rewrite codecs</Item>
+  <Item Id="PreferencesPreparseDropCodecsHelp">
+    Drop all tag codec information like used text encoding or unsynchronization.
+    The information is re-written using the build-in default encodings. Litte-Endian
+    Unicode and Utf-8 are built-in preferred text codecs.
+  </Item>
+  <Item Id="PreferencesPreparseAlbumToFilename">
+    Album -&gt; filename
+  </Item>
+  <Item Id="PreferencesPreparseAlbumToFilenameHelp">
+    Rename all files after preparse according to filename pattern.
+  </Item>
+  <Item Id="PreferencesPreparseAlbumToDirectory">
+    Album -&gt; foldername
+  </Item>
+  <Item Id="PreferencesPreparseAlbumToDirectoryHelp">
+    Rename all folders after preparse according to foldername pattern.
+  </Item>
+
+  <Item Id="PreferencesWebToTag">Webquery -&gt; Tag Commands</Item>
+  <Item Id="PreferencesWebToTagHelp">
+    Settings for internet queries creating tags.
+  </Item>
+  <Item Id="PreferencesWebToTagMultipleChoiseHeuristic">
+    Multiple Choice Heuristic
+  </Item>
+  <Item Id="PreferencesWebToTagMultipleChoiseHeuristicHelp">
+    If multiple choices are returned from an internet query, the heuristic
+    helps to prevent false-positives when set to strict and accepts more
+    if set to fuzzy. (Details: When set to strict, the file path is splitted
+    into words where at least one word must match the results returned from
+    Discogs. This prevents false positive tagging for duplicate disc IDs)
+  </Item>
+
+  <Item Id="PreferencesFilenameToTag">Filename -&gt; Tag Command</Item>
+  <Item Id="PreferencesFilenameToTagHelp">
+    Extracts tag information like artist and title from filenames.
+  </Item>
+  <Item Id="PreferencesFilenameToTagPattern">Pattern</Item>
+  <Item Id="PreferencesFilenameToTagPatternHelp">
+    Pattern that defines how tag information MAYBE extracted from file names.
+    Supported case-sensitive keywords are: 'Artist', 'Album', 'Title',
+    'TrackNumber', 'ReleaseYear', 'PartOfSet', 'ContentType', 'Composer',
+    'BandOrchestraAccompaniment', 'ConductorPerformer', 'InterpretedRemixedModified',
+    'Publisher' and 'Encoder'.
+  </Item>
+
+  <Item Id="PreferencesAlbumToToLibrary">Album -&gt; Library Command</Item>
+  <Item Id="PreferencesAlbumToToLibraryHelp">
+    Copies or moves all albums found to the library folder. The library folder
+    can be set-up in the preferences tab.  NOTE: The command only works on folders
+    regarded as album. A folder is regarded as album only if it fulfills all
+    requirements set up in 'Album Recognition'.
+  </Item>
+  <Item Id="PreferencesAlbumToToLibraryMoveOrCopy">Move or Copy</Item>
+  <Item Id="PreferencesAlbumToToLibraryMoveOrCopyHelp">
+    Chose if a as album regarded folder is copied or moved into the
+    library. A move deletes the source folder after copy.
+  </Item>
+  <Item Id="PreferencesAlbumToToLibraryConflicts">
+    If target exists
+  </Item>
+  <Item Id="PreferencesAlbumToToLibraryConflictsHelp">
+    Define what happens if the album already exists in library.
+  </Item>
+
+  <!-- Commands ============================================================= -->
+
+  <Item Id="DocumentCommandsAlbumExplorerProcessor">
+    Search for tagged albums
+  </Item>
+  <Item Id="DocumentCommandsAlbumExplorerProcessorHelp">
+    Searches folders for albums. An a folder is regarded as album if:
+    1) It contains at least three MP3 files. 2) All included files contain at
+    least artist, album, title and track number information.
+  </Item>
+  
+  <Item Id="DocumentCommandsPreparse">
+    Rewrite Tags
+  </Item>
+  <Item Id="DocumentCommandsPreparseHelp">
+    Re-writes all tag informations in all MP3 files found. It combines several
+    often used operations. Detailed settings are offered in the preferences tab.
+  </Item>
+  
+  <Item Id="DocumentCommandsCheckForFreedb">
+    FreeDB -&gt; Tag
+  </Item>
+  <Item Id="DocumentCommandsCheckForFreedbHelp">
+    Queries internet database http://www.freedb.org to create tag informations like
+    artist, album, title and release year from just the MP3s. For the command to work,
+    all files of an CD are required in the order they were on CD.
+  </Item>
+
+  <Item Id="DocumentCommandsCheckForDiscogs">
+    Discogs -&gt; Tag
+  </Item>
+  <Item Id="DocumentCommandsCheckForDiscogsHelp">
+    Queries internet database http://www.discogs.com to create tag informations like
+    artist, album, title, release year and cover art from the 'pre-tagged' MP3s. For
+    the command to work, all files MUST have artist and album name set. The information
+    from Discogs is well maintained but for finding hits, the artist and album name
+    must exactly match the entries in the Discogs database. Quering Discogs might be
+    quite slow.
+  </Item>
+
+  <Item Id="DocumentCommandsCheckForMusicBrainz">
+    MusicBrainz -&gt; Tag
+  </Item>
+  <Item Id="DocumentCommandsCheckForMusicBrainzHelp">
+    Queries internet database http://www.musicbrainz.org to create tag informations like
+    artist, album, title and release year from the 'pre-tagged' MP3s. For the command
+    to work, all files MUST have artist and album name set. Quering MusicBrainz might
+    be quite slow but also produces good results if artist or album name do not match
+    the exactly.
+  </Item>
+
+  <Item Id="DocumentCommandsCoverSearch">
+    Google -&gt; Cover
+  </Item>
+  <Item Id="DocumentCommandsCoverSearchHelp">
+    Searches for album cover and store in MP3 files. The covers are search
+    using google image search. The first result of five is taken if it
+    meets the following criterias:
+    1) JPG or PNG.
+    2) the file is bigger than 6kB.
+    3) The difference of width and height may not be bigger than 10%.
+    4) The server anwers the download request.
+  </Item>
+
+  <Item Id="DocumentCommandsFilenameToTag">
+    Filename -&gt; Tag
+  </Item>
+  <Item Id="DocumentCommandsFilenameToTagHelp">
+    Extracts tag information like artist and title from filenames.
+    The rules can be define in the preferences tab.
+  </Item>
+
+  <Item Id="DocumentCommandsTagToFilename">
+    Album -&gt; Filename
+  </Item>
+  <Item Id="DocumentCommandsTagToFilenameHelp">
+    Changes filenames according to tag information like artist and title.
+    The rules can be define in the preferences tab.
+    NOTE: The command only works on folders regarded as album. A folder
+    is regarded as album only if: 1) It contains at least three files. 2) All
+    included files contain at least artist, album, title and track number
+    information.
+  </Item>
+
+  <Item Id="DocumentCommandsAlbumToDirectory">
+    Album -&gt; Folder
+  </Item>
+  <Item Id="DocumentCommandsAlbumToDirectoryHelp">
+    Changes folder name according to tag information in contained MP3 files.
+    The rules can be define in the preferences tab.
+    NOTE: The command only works on folders regarded as album. A folder
+    is regarded as album only if: 1) It contains at least three files. 2) All
+    included files contain at least artist, album, title and track number
+    information.
+  </Item>
+
+  <Item Id="DocumentCommandsAlbumToLibrary">
+    Album -&gt; Library
+  </Item>
+  <Item Id="DocumentCommandsAlbumToLibraryHelp">
+    Copies or moves all albums found to the library folder. The library
+    folder can be set-up in the preferences tab.
+    NOTE: The command only works on folders regarded as album. A folder
+    is regarded as album only if: 1) It contains at least three files. 2) All
+    included files contain at least artist, album, title and track number
+    information.
+  </Item>
+
+  <Item Id="DocumentCommandsOpenExplorer">
+    Open in explorer
+  </Item>
+  <Item Id="DocumentCommandsOpenExplorerHelp">
+    Opens folder in windows explorer.
+  </Item>
+  <Item Id="DocumentCommandsOpenWikipedia">
+    Tries to query wikipedia about the folder name.
+  </Item>
+  <Item Id="DocumentCommandsDeleteFolder">
+    Delete folder
+  </Item>
+  <Item Id="DocumentCommandsDeleteFolderHelp">
+    Moves the folder to the program internal recycle which allows to undo
+    the operation. The recycle is cleared when closing the program.
+  </Item>
+
+  <Item Id="StatusBarReady">Ready</Item>
+  <Item Id="StatusBarContextMenu">Context Menu</Item>
+  <Item Id="StatusBarDropTarget">Drop Target</Item>
+  <Item Id="StatusBarButtonCancel">Cancel</Item>
+
+  <Item Id="ButtonUndo">Undo</Item>
+  <Item Id="ButtonRedo">Redo</Item>
+
+  <Item Id="TabHeaderEditor">Editor</Item>
+  <Item Id="TabHeaderConsole">Console</Item>
+  <Item Id="TabHeaderPreferences">Preferences</Item>
+  <Item Id="TabHeaderLibrary">Library</Item>
+
+  <Item Id="ButtonSave">Save</Item>
+  <Item Id="ButtonAdd">Add</Item>
+  <Item Id="LabelSimple">Simple</Item>
+
+  <Item Id="TagModelItemDelete">X</Item>
+
+  <Item Id="TagModelItemPictureDescription">Description:</Item>
+  <Item Id="TagModelItemPictureType">Type:</Item>
+  <Item Id="TagModelItemPictureImport">Import</Item>
+  <Item Id="TagModelItemPictureExport">Export</Item>
+
+  <Item Id="TagModelItemCommentDescription">Description:</Item>
+  <Item Id="TagModelItemCommentLanguage">Language:</Item>
+
+  <Item Id="MultiTagModelItemButtonDuplicate">D</Item>
+  <Item Id="MultiTagModelItemButtonDelete">X</Item>
+
+  <Item Id="PlayerLabelPosition">Position:</Item>
+  <Item Id="PlayerLabelVolume">Volume:</Item>
+
+</Items>

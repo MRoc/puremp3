@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="PureMp3.LibraryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:text="clr-namespace:CoreDocument.Text;assembly=CoreDocument"
+             xmlns:controls="clr-namespace:CoreControls.Controls;assembly=CoreControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <Label DockPanel.Dock="Left"
+                       Content="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=LibrarySearch}" />
+                <controls:WorkIndicatorView
+                        Margin="2,0,0,0"
+                        DockPanel.Dock="Right"
+                        x:Name="workIndicator"
+                        Width="20" Height="20"
+                        DataContext="{Binding Path=IsRefreshing}"
+                        State="{Binding Path=Value}" />
+                <TextBox
+                    DataContext="{Binding Path=SearchString}"
+                    Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+            </DockPanel>
+            <DataGrid
+                Margin="2"
+                AutoGenerateColumns="False"
+                RowHeaderWidth="0"
+                ItemsSource="{Binding Path=Tracks}"
+                SelectionMode="Single"
+                MouseDoubleClick="OnDoubleClick"
+                x:Name="mainDataGrid"
+                EnableRowVirtualization="True"
+                Sorting="mainDataGrid_Sorting">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=Artist}" Width="150" Binding="{Binding Path=Artist}" IsReadOnly="true" />
+                    <DataGridTextColumn Header="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=Album}" Width="150" Binding="{Binding Path=Album}" IsReadOnly="true" />
+                    <DataGridTextColumn Header="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=Title}" Width="150" Binding="{Binding Path=Title}" IsReadOnly="true" />
+                    <DataGridTextColumn Header="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=TrackNumber}" Width="50" Binding="{Binding Path=TrackNumber}" IsReadOnly="true" />
+                    <DataGridTextColumn Header="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=PartOfSet}" Width="50" Binding="{Binding Path=PartOfSet}" IsReadOnly="true" />
+                    <DataGridTextColumn Header="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=ReleaseYear}" Width="50" Binding="{Binding Path=ReleaseYear}" IsReadOnly="true" />
+                    <DataGridTextColumn Header="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=Bitrate}" Width="50" Binding="{Binding Path=Bitrate}" IsReadOnly="true" />
+                    <DataGridTextColumn Header="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=ContentType}" Width="50" Binding="{Binding Path=ContentType}" IsReadOnly="true" />
+                    <DataGridTextColumn Header="{Binding Source={x:Static text:TextBindingProvider.Instance}, Path=Filename}" Width="600" Binding="{Binding Path=Filename}" IsReadOnly="true" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TagDescriptions>
+  <Version Major="1" Minor="0">
+    <Classes Tag="ID3.Tag" TagCodec="ID3.Codec.TagCodecV1" Frame="ID3.Frame" FrameCodec="ID3.Codec.FrameCodec1_0" />
+    <ContentClasses>
+      <ContentClass Type="Text" Class="ID3.FrameContentText" />
+    </ContentClasses>
+    <Frames>
+      <Frame Id="COM" Description="Comments" ShortDescription="Comment" Category="Standard" Type="Text" Meaning="Comment" />
+      <Frame Id="TAL" Description="Album/Movie/Show title" ShortDescription="Album" Category="Standard" Type="Text" Meaning="Album" />
+      <Frame Id="TCO" Description="Content type" ShortDescription="Content type" Category="Standard" Type="Text" Meaning="ContentType"/>
+      <Frame Id="TT2" Description="Title/Songname/Content description" ShortDescription="Title" Category="Standard" Type="Text" Meaning="Title"/>
+      <Frame Id="TP1" Description="Lead artist(s)/Lead performer(s)/Soloist(s)/Performing group" ShortDescription="Artist" Category="Standard" Type="Text" Meaning="Artist"/>
+      <Frame Id="TYE" Description="Year" ShortDescription="Release year" Category="Standard" Type="Text" Meaning="ReleaseYear" />
+      <Frame Id="TRK" Description="Track number/Position in set" ShortDescription="Track number" Category="Standard" Type="Text" Meaning="TrackNumber"/>
+    </Frames>
+    <Conversions>
+      <Conversion Old="COM" New="COM" />
+      <Conversion Old="TAL" New="TAL" />
+      <Conversion Old="TCO" New="TCO" />
+      <Conversion Old="TT2" New="TT2" />
+      <Conversion Old="TP1" New="TP1" />
+      <Conversion Old="TYE" New="TYE" />
+      <Conversion Old="TRK" New="TRK" />
+    </Conversions>
+    <TextCodecs>
+      <TextCodec Name="Iso88591" Preferred="True" Class="ID3.Codec.TextEncoderISO_8859_1" />
+    </TextCodecs>
+  </Version>
+  <Version Major="2" Minor="0">
+    <Classes Tag="ID3.Tag" TagCodec="ID3.Codec.TagCodecV2" Frame="ID3.Frame" FrameCodec="ID3.Codec.FrameCodec2_0" />
+    <ContentClasses>
+      <ContentClass Type="Text" Class="ID3.FrameContentText" />
+      <ContentClass Type="UserText" Class="ID3.FrameContentUserText" />
+      <ContentClass Type="Comment" Class="ID3.FrameContentComment" />
+      <ContentClass Type="Picture" Class="ID3.FrameContentPicture" />
+      <ContentClass Type="URL" Class="ID3.FrameContentUrlLink" />
+      <ContentClass Type="UserURL" Class="ID3.FrameContentUserUrlLink" />
+      <ContentClass Type="StringList" Class="ID3.FrameContentTextList" />
+    </ContentClasses>
+    <Frames>
+      <Frame Id="BUF" Description="Recommended buffer size" Category="Standard" Type="Binary" />
+      <Frame Id="CNT" Description="Play counter" ShortDescription="Play counter" Category="Standard" Type="Binary" />
+      <Frame Id="COM" Description="Comments" ShortDescription="Comments" Category="Standard" Type="Comment" Meaning="Comment"/>
+      <Frame Id="CRA" Description="Audio encryption" Category="Standard" Type="Binary" />
+      <Frame Id="CRM" Description="Encrypted meta frame" ShortDescription="" Category="Standard" Type="Binary" />
+      <Frame Id="ETC" Description="Event timing codes" Category="Standard" Type="Binary" />
+      <Frame Id="EQU" Description="Equalization" Category="Standard" Type="Binary" />
+      <Frame Id="GEO" Description="General encapsulated object" Category="Standard" Type="Binary" />
+      <Frame Id="IPL" Description="Involved people list" ShortDescription="Involved people" Category="Standard" Type="StringList" />
+      <Frame Id="LNK" Description="Linked information" Category="Standard" Type="Binary" />
+      <Frame Id="MCI" Description="Music CD Identifier" Category="Standard" Type="Binary" Meaning="MusicCdIdentifier"/>
+      <Frame Id="MLL" Description="MPEG location lookup table" Category="Standard" Type="Binary" />
+      <Frame Id="PIC" Description="Attached picture" ShortDescription="Picture" Category="Standard" Type="Picture" Meaning="Picture"/>
+      <Frame Id="POP" Description="Popularimeter" Category="Standard" Type="Binary" />
+      <Frame Id="REV" Description="Reverb" Category="Standard" Type="Binary" />
+      <Frame Id="RVA" Description="Relative volume adjustment" Category="Standard" Type="Binary" />
+      <Frame Id="SLT" Description="Synchronized lyric/text" Category="Standard" Type="Binary" />
+      <Frame Id="STC" Description="Synced tempo codes" Category="Standard" Type="Binary" />
+      <Frame Id="TAL" Description="Album/Movie/Show title" ShortDescription="Album" Category="Standard" Type="Text" Meaning="Album"/>
+      <Frame Id="TBP" Description="BPM (Beats Per Minute)" ShortDescription="BPM" Category="Standard" Type="Text" />
+      <Frame Id="TCM" Description="Composer" ShortDescription="Composer" Category="Standard" Type="Text" Meaning="Composer" />
+      <Frame Id="TCO" Description="Content type" ShortDescription="Content type" Category="Standard" Type="Text" Meaning="ContentType" />
+      <Frame Id="TCR" Description="Copyright message" ShortDescription="Copyright"  Category="Standard" Type="Text" />
+      <Frame Id="TDA" Description="Date" Category="Standard" Type="Text" />
+      <Frame Id="TDY" Description="Playlist delay" Category="Standard" Type="Text" />
+      <Frame Id="TEN" Description="Encoded by" Category="Standard" Type="Text" Meaning="Encoder" />
+      <Frame Id="TFT" Description="File type" Category="Standard" Type="Text" />
+      <Frame Id="TIM" Description="Time" Category="Standard" Type="Text" />
+      <Frame Id="TKE" Description="Initial key" Category="Standard" Type="Text" />
+      <Frame Id="TLA" Description="Language(s)" Category="Standard" Type="Text" />
+      <Frame Id="TLE" Description="Length" Category="Standard" Type="Text" Meaning="LengthInMilliSeconds" />
+      <Frame Id="TMT" Description="Media type" Category="Standard" Type="Text" />
+      <Frame Id="TOA" Description="Original artist(s)/performer(s)" ShortDescription="Performer" Category="Standard" Type="Text" />
+      <Frame Id="TOF" Description="Original filename" ShortDescription="Filename" Category="Standard" Type="Text" />
+      <Frame Id="TOL" Description="Original Lyricist(s)/text writer(s)" ShortDescription="Original lyricist" Category="Standard" Type="Text" />
+      <Frame Id="TOR" Description="Original release year" ShortDescription="Original year" Category="Standard" Type="Text" />
+      <Frame Id="TOT" Description="Original album/Movie/Show title" ShortDescription="Original album" Category="Standard" Type="Text" />
+      <Frame Id="TP1" Description="Lead artist(s)/Lead performer(s)/Soloist(s)/Performing group" ShortDescription="Artist" Category="Standard" Type="Text" Meaning="Artist"/>
+      <Frame Id="TP2" Description="Band/Orchestra/Accompaniment" ShortDescription="Band" Category="Standard" Type="Text" Meaning="BandOrchestraAccompaniment" />
+      <Frame Id="TP3" Description="Conductor/Performer refinement" ShortDescription="Performer" Category="Standard" Type="Text" Meaning="ConductorPerformer" />
+      <Frame Id="TP4" Description="Interpreted, remixed, or otherwise modified by" ShortDescription="Remixer" Category="Standard" Type="Text" Meaning="InterpretedRemixedModified" />
+      <Frame Id="TPA" Description="Part of a set" Category="Standard" Type="Text" Meaning="PartOfSet" />
+      <Frame Id="TPB" Description="Publisher" Category="Standard" Type="Text" Meaning="Publisher" />
+      <Frame Id="TRC" Description="ISRC (International Standard Recording Code)" ShortDescription="ISRC" Category="Standard" Type="Text" />
+      <Frame Id="TRD" Description="Recording dates" Category="Standard" Type="Text" />
+      <Frame Id="TRK" Description="Track number/Position in set" ShortDescription="Track number" Category="Standard" Type="Text" Meaning="TrackNumber"/>
+      <Frame Id="TSI" Description="Size" Category="Standard" Type="Text" />
+      <Frame Id="TSS" Description="Software/hardware and settings used for encoding" Category="Standard" Type="Text" />
+      <Frame Id="TT1" Description="Content group description" ShortDescription="Content group" Category="Standard" Type="Text" />
+      <Frame Id="TT2" Description="Title/Songname/Content description" ShortDescription="Title" Category="Standard" Type="Text" Meaning="Title" />
+      <Frame Id="TT3" Description="Subtitle/Description refinement" ShortDescription="Subtitle" Category="Standard" Type="Text" />
+      <Frame Id="TXT" Description="Lyricist/text writer" ShortDescription="Lyricist" Category="Standard" Type="Text" />
+      <Frame Id="TXX" Description="User defined text information frame" ShortDescription="User" Category="Standard" Type="UserText" />
+      <Frame Id="TYE" Description="Year" ShortDescription="Release year" Category="Standard" Type="Text" Meaning="ReleaseYear"/>
+      <Frame Id="UFI" Description="Unique file identifier" ShortDescription="File ID" Category="Standard" Type="Binary" />
+      <Frame Id="ULT" Description="Unsychronized lyric/text transcription" Category="Standard" Type="Binary" />
+      <Frame Id="WAF" Description="Official audio file webpage" ShortDescription="File URL" Category="Standard" Type="URL" />
+      <Frame Id="WAR" Description="Official artist/performer webpage" ShortDescription="Artist URL" Category="Standard" Type="URL" />
+      <Frame Id="WAS" Description="Official audio source webpage" ShortDescription="Source URL" Category="Standard" Type="URL" />
+      <Frame Id="WCM" Description="Commercial information" ShortDescription="Commercial" Category="Standard" Type="URL" />
+      <Frame Id="WCP" Description="Copyright/Legal information" ShortDescription="Legal" Category="Standard" Type="URL" />
+      <Frame Id="WPB" Description="Publishers official webpage" ShortDescription="Publisher URL" Category="Standard" Type="URL" />
+      <Frame Id="WXX" Description="User defined URL link frame" ShortDescription="User URL" Category="Standard" Type="UserURL" />
+      <Frame Id="TCP" Description="Non-Standard NCON frame: https://svn.liip.ch/repos/public/fluxcms/trunk/inc/MP3/Id.php" Category="NonStandard" Type="Binary" />
+      <Frame Id="CM1" Description="Non-Standard PRV frame: https://svn.liip.ch/repos/public/fluxcms/trunk/inc/MP3/Id.php" Category="NonStandard" Type="Binary" />
+      <Frame Id="RIV" Description="UNKNOWN" Category="NonStandard" Type="Binary" />
+    </Frames>
+    <Conversions>
+      <Conversion Old="CNT" New="PCNT" />
+      <Conversion Old="COM" New="COMM" />
+      <Conversion Old="ETC" New="ETCO" />
+      <Conversion Old="GEO" New="GEOB" />
+      <Conversion Old="IPL" New="IPLS" />
+      <Conversion Old="LNK" New="LINK" />
+      <Conversion Old="MCI" New="MCDI" />
+      <Conversion Old="MLL" New="MLLT" />
+      <Conversion Old="PIC" New="APIC" />
+      <Conversion Old="POP" New="POPM" />
+      <Conversion Old="TAL" New="TALB" />
+      <Conversion Old="TBP" New="TBPM" />
+      <Conversion Old="TCM" New="TCOM" />
+      <Conversion Old="TCO" New="TCON" />
+      <Conversion Old="TCR" New="TCOP" />
+      <Conversion Old="TDA" New="TDAT" />
+      <Conversion Old="TDY" New="TDLY" />
+      <Conversion Old="TEN" New="TENC" />
+      <Conversion Old="TFT" New="TFLT" />
+      <Conversion Old="TIM" New="TIME" />
+      <Conversion Old="TKE" New="TKEY" />
+      <Conversion Old="TLA" New="TLAN" />
+      <Conversion Old="TLE" New="TLEN" />
+      <Conversion Old="TMT" New="TMED" />
+      <Conversion Old="TOA" New="TOPE" />
+      <Conversion Old="TOF" New="TOFN" />
+      <Conversion Old="TOL" New="TOLY" />
+      <Conversion Old="TOR" New="TORY" />
+      <Conversion Old="TOT" New="TOAL" />
+      <Conversion Old="TP1" New="TPE1" />
+      <Conversion Old="TP2" New="TPE2" />
+      <Conversion Old="TP3" New="TPE3" />
+      <Conversion Old="TP4" New="TPE4" />
+      <Conversion Old="TPA" New="TPOS" />
+      <Conversion Old="TPB" New="TPUB" />
+      <Conversion Old="TRC" New="TSRC" />
+      <Conversion Old="TRD" New="TRDA" />
+      <Conversion Old="TRK" New="TRCK" />
+      <Conversion Old="TSI" New="TSIZ" />
+      <Conversion Old="TSS" New="TSSE" />
+      <Conversion Old="TT1" New="TIT1" />
+      <Conversion Old="TT2" New="TIT2" />
+      <Conversion Old="TT3" New="TIT3" />
+      <Conversion Old="TXT" New="TEXT" />
+      <Conversion Old="TYE" New="TYER" />
+      <Conversion Old="TXX" New="TXXX" />
+      <Conversion Old="UFI" New="UFID" />
+      <Conversion Old="ULT" New="USLT" />
+      <Conversion Old="WAF" New="WOAF" />
+      <Conversion Old="WAR" New="WOAR" />
+      <Conversion Old="WAS" New="WOAS" />
+      <Conversion Old="WCM" New="WCOM" />
+      <Conversion Old="WCP" New="WCOP" />
+      <Conversion Old="WPB" New="WPUB" />
+      <Conversion Old="WXX" New="WXXX" />
+    </Conversions>
+    <TextCodecs>
+      <TextCodec Name="Iso88591" Class="ID3.Codec.TextEncoderISO_8859_1" />
+      <TextCodec Name="Ucs2WithBom" Preferred="True" Class="ID3.Codec.TextEncoderUnicodeUcs2" />
+      <TextCodec Name="CodecUtf16BigEndian" Class="" Remark="NonStandard"/>
+      <TextCodec Name="CodecUtf8" Class="ID3.Codec.TextEncoderUnicodeUtf8" Remark="NonStandard"/>
+    </TextCodecs>
+  </Version>
+  <Version Major="3" Minor="0">
+    <Classes Tag="ID3.Tag" TagCodec="ID3.Codec.TagCodecV2" Frame="ID3.Frame" FrameCodec="ID3.Codec.FrameCodec2_3" />
+    <ContentClasses>
+      <ContentClass Type="Text" Class="ID3.FrameContentText" />
+      <ContentClass Type="UserText" Class="ID3.FrameContentUserText" />
+      <ContentClass Type="Comment" Class="ID3.FrameContentComment" />
+      <ContentClass Type="Picture" Class="ID3.FrameContentPicture" />
+      <ContentClass Type="URL" Class="ID3.FrameContentUrlLink" />
+      <ContentClass Type="UserURL" Class="ID3.FrameContentUserUrlLink" />
+      <ContentClass Type="StringList" Class="ID3.FrameContentTextList" />
+    </ContentClasses>
+    <Frames>
+      <Frame Id="AENC" Description="Audio encryption" Category="Standard" Type="Binary" />
+      <Frame Id="APIC" Description="Attached picture" ShortDescription="Picture" Category="Standard" Type="Picture" Meaning="Picture" />
+      <Frame Id="COMM" Description="Comments" ShortDescription="Comments" Category="Standard" Type="Comment" Meaning="Comment" />
+      <Frame Id="COMR" Description="Commercial frame" ShortDescription="Commercial" Category="Standard" Type="Binary" />
+      <Frame Id="ENCR" Description="Encryption method registration" Category="Standard" Type="Binary" />
+      <Frame Id="EQUA" Description="Equalization" Category="Standard" Type="Binary" />
+      <Frame Id="ETCO" Description="Event timing codes" Category="Standard" Type="Binary" />
+      <Frame Id="GEOB" Description="General encapsulated object" Category="Standard" Type="Binary" />
+      <Frame Id="GRID" Description="Group identification registration" Category="Standard" Type="Binary" />
+      <Frame Id="IPLS" Description="Involved people list" ShortDescription="Involved people" Category="Standard" Type="StringList" />
+      <Frame Id="LINK" Description="Linked information" ShortDescription="Link information" Category="Standard" Type="Binary" />
+      <Frame Id="MCDI" Description="Music CD identifier" Category="Standard" Type="Binary" Meaning="MusicCdIdentifier" />
+      <Frame Id="MLLT" Description="MPEG location lookup table" Category="Standard" Type="Binary" />
+      <Frame Id="OWNE" Description="Ownership frame" Category="Standard" Type="Binary" />
+      <Frame Id="PRIV" Description="Private frame" Category="Standard" Type="Binary" />
+      <Frame Id="PCNT" Description="Play counter" Category="Standard" Type="Binary" />
+      <Frame Id="POPM" Description="Popularimeter" Category="Standard" Type="Binary" />
+      <Frame Id="POSS" Description="Position synchronisation frame" Category="Standard" Type="Binary" />
+      <Frame Id="RBUF" Description="Recommended buffer size" Category="Standard" Type="Binary" />
+      <Frame Id="RVAD" Description="Relative volume adjustment" Category="Standard" Type="Binary" />
+      <Frame Id="RVRB" Description="Reverb" Category="Standard" Type="Binary" />
+      <Frame Id="SYLT" Description="Synchronized lyric/text" Category="Standard" Type="Binary" />
+      <Frame Id="SYTC" Description="Synchronized tempo codes" Category="Standard" Type="Binary" />
+      <Frame Id="TALB" Description="Album/Movie/Show title" ShortDescription="Album" Category="Standard" Type="Text" Meaning="Album"/>
+      <Frame Id="TBPM" Description="BPM (beats per minute)" ShortDescription="BPM" Category="Standard" Type="Text" />
+      <Frame Id="TCOM" Description="Composer" Category="Standard" Type="Text" Meaning="Composer" />
+      <Frame Id="TCON" Description="Content type" Category="Standard" Type="Text" Meaning="ContentType" />
+      <Frame Id="TCOP" Description="Copyright message" ShortDescription="Copyright" Category="Standard" Type="Text" />
+      <Frame Id="TDAT" Description="Date" Category="Standard" Type="Text" />
+      <Frame Id="TDLY" Description="Playlist delay" Category="Standard" Type="Text" />
+      <Frame Id="TENC" Description="Encoded by" Category="Standard" Type="Text" Meaning="Encoder" />
+      <Frame Id="TEXT" Description="Lyricist/Text writer" Category="Standard" Type="Text" />
+      <Frame Id="TFLT" Description="File type" Category="Standard" Type="Text" />
+      <Frame Id="TIME" Description="Time" Category="Standard" Type="Text" />
+      <Frame Id="TIT1" Description="Content group description" ShortDescription="Content group" Category="Standard" Type="Text" />
+      <Frame Id="TIT2" Description="Title/songname/content description" ShortDescription="Title" Category="Standard" Type="Text" Meaning="Title"/>
+      <Frame Id="TIT3" Description="Subtitle/Description refinement" ShortDescription="Subtitle" Category="Standard" Type="Text" />
+      <Frame Id="TKEY" Description="Initial key" Category="Standard" Type="Text" />
+      <Frame Id="TLAN" Description="Language(s)" Category="Standard" Type="Text" />
+      <Frame Id="TLEN" Description="Length" Category="Standard" Type="Text" Meaning="LengthInMilliSeconds" />
+      <Frame Id="TMED" Description="Media type" Category="Standard" Type="Text" />
+      <Frame Id="TOAL" Description="Original album/movie/show title" ShortDescription="Album" Category="Standard" Type="Text" />
+      <Frame Id="TOFN" Description="Original filename" ShortDescription="Filename" Category="Standard" Type="Text" />
+      <Frame Id="TOLY" Description="Original lyricist(s)/text writer(s)" ShortDescription="Original lyricist" Category="Standard" Type="Text" />
+      <Frame Id="TOPE" Description="Original artist(s)/performer(s)" ShortDescription="Original performer" Category="Standard" Type="Text" />
+      <Frame Id="TORY" Description="Original release year" ShortDescription="Original year" Category="Standard" Type="Text" />
+      <Frame Id="TOWN" Description="File owner/licensee" Category="Standard" Type="Text" />
+      <Frame Id="TPE1" Description="Lead performer(s)/Soloist(s)" ShortDescription="Artist" Category="Standard" Type="Text" Meaning="Artist"/>
+      <Frame Id="TPE2" Description="Band/orchestra/accompaniment" ShortDescription="Band" Category="Standard" Type="Text" Meaning="BandOrchestraAccompaniment" />
+      <Frame Id="TPE3" Description="Conductor/performer refinement" ShortDescription="Performer" Category="Standard" Type="Text" Meaning="ConductorPerformer" />
+      <Frame Id="TPE4" Description="Interpreted, remixed, or otherwise modified by" ShortDescription="Remixer" Category="Standard" Type="Text" Meaning="InterpretedRemixedModified" />
+      <Frame Id="TPOS" Description="Part of a set" Category="Standard" Type="Text" Meaning="PartOfSet" />
+      <Frame Id="TPRO" Description="Produced notice" Category="Standard" Type="Text" />
+      <Frame Id="TPUB" Description="Publisher" Category="Standard" Type="Text" Meaning="Publisher" />
+      <Frame Id="TRCK" Description="Track number/Position in set" ShortDescription="Track number" Category="Standard" Type="Text" Meaning="TrackNumber" />
+      <Frame Id="TRDA" Description="Recording dates" Category="Standard" Type="Text" />
+      <Frame Id="TRSN" Description="Internet radio station name" ShortDescription="Web station name" Category="Standard" Type="Text" />
+      <Frame Id="TRSO" Description="Internet radio station owner" ShortDescription="Web station owner" Category="Standard" Type="Text" />
+      <Frame Id="TSIZ" Description="Size" Category="Standard" Type="Text" />
+      <Frame Id="TSOA" Description="Album sort order" Category="Standard" Type="Text" />
+      <Frame Id="TSOP" Description="Performer sort order" Category="Standard" Type="Text" />
+      <Frame Id="TSOT" Description="Title sort order" Category="Standard" Type="Text" />
+      <Frame Id="TSRC" Description="ISRC (international Standard recording code)" ShortDescription="ISRC" Category="Standard" Type="Text" />
+      <Frame Id="TSSE" Description="Software/Hardware and settings used for encoding" Category="Standard" Type="Text" />
+      <Frame Id="TYER" Description="Year" Category="Standard" Type="Text" Meaning="ReleaseYear" />
+      <Frame Id="TXXX" Description="User defined text information frame" ShortDescription="User text" Category="Standard" Type="UserText" />
+      <Frame Id="UFID" Description="Unique file identifier" ShortDescription="File ID" Category="Standard" Type="Binary" />
+      <Frame Id="USER" Description="Terms of use" Category="Standard" Type="Binary" />
+      <Frame Id="USLT" Description="Unsychronized lyric/text transcription" Category="Standard" Type="Binary" />
+      <Frame Id="WCOM" Description="Commercial information" Category="Standard" Type="URL" />
+      <Frame Id="WCOP" Description="Copyright/Legal information" Category="Standard" Type="URL" />
+      <Frame Id="WOAF" Description="Official audio file webpage" Category="Standard" Type="URL" />
+      <Frame Id="WOAR" Description="Official artist/performer webpage" Category="Standard" Type="URL" />
+      <Frame Id="WOAS" Description="Official audio source webpage" Category="Standard" Type="URL" />
+      <Frame Id="WORS" Description="Official internet radio station homepage" Category="Standard" Type="URL" />
+      <Frame Id="WPAY" Description="Payment" Category="Standard" Type="URL" />
+      <Frame Id="WPUB" Description="Publishers official webpage" Category="Standard" Type="URL" />
+      <Frame Id="WXXX" Description="User defined URL link frame" Category="Standard" Type="UserURL" />
+      <Frame Id="NCON" Description="Non-Standard NCON frame: http://www.id3.org/Compliance_Issues" Category="NonStandard" Type="Binary" />
+      <Frame Id="TCMP" Description="Non-Standard TCMP frame: http://www.id3.org/Compliance_Issues" Category="NonStandard" Type="Binary" />
+      <Frame Id="TT22" Description="Non-Standard TT22 frame (Beats per minute)" Category="NonStandard" Type="Binary" />
+      <Frame Id="ASPI" Description="Audio seek point index Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="EQU2" Description="Equalisation (2) Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="RVA2" Description="Relative volume adjustment (2) Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="SEEK" Description="Seek frame Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="SIGN" Description="Signature frame Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TDEN" Description="Encoding time Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TDOR" Description="Original release time Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TDRC" Description="Recording time Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TDRL" Description="Release time Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TDTG" Description="Tagging time Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TIPL" Description="Involved people list Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TMCL" Description="Musician credits list Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TMOO" Description="Mood Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TSST" Description="Set subtitle Non-Standard (2.4.0)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TCP " Description="Non-Standard TCP frame: https://svn.liip.ch/repos/public/fluxcms/trunk/inc/MP3/Id.php" Category="NonStandard" Type="Binary" />
+      <Frame Id="TCP" Description="Non-Standard TCP frame: https://svn.liip.ch/repos/public/fluxcms/trunk/inc/MP3/Id.php" Category="NonStandard" Type="Binary" />
+      <Frame Id="PRV " Description="Non-Standard PRV frame: https://svn.liip.ch/repos/public/fluxcms/trunk/inc/MP3/Id.php" Category="NonStandard" Type="Binary" />
+      <Frame Id="CM1" Description="Non-Standard PRV frame: https://svn.liip.ch/repos/public/fluxcms/trunk/inc/MP3/Id.php" Category="NonStandard" Type="Binary" />
+      <Frame Id="PCST" Description="Non-Standard PCST frame" Category="NonStandard" Type="Binary" />
+      <Frame Id="TTSE" Description="Non-Standard TTSE frame: Software/Hardware and settings used for encoding" Category="NonStandard" Type="Binary" />
+    </Frames>
+    <InvalidFrameIds>
+      <InvalidFrameId Value="MP3e" />
+    </InvalidFrameIds>
+    <Conversions>
+      <Conversion Old="AENC" New="AENC" />
+      <Conversion Old="APIC" New="APIC" />
+      <Conversion Old="COMM" New="COMM" />
+      <Conversion Old="COMR" New="COMR" />
+      <Conversion Old="ENCR" New="ENCR" />
+      <Conversion Old="ETCO" New="ETCO" />
+      <Conversion Old="GEOB" New="GEOB" />
+      <Conversion Old="GRID" New="GRID" />
+      <Conversion Old="IPLS" New="TIPL" />
+      <Conversion Old="LINK" New="LINK" />
+      <Conversion Old="MCDI" New="MCDI" />
+      <Conversion Old="MLLT" New="MLLT" />
+      <Conversion Old="OWNE" New="OWNE" />
+      <Conversion Old="PRIV" New="PRIV" />
+      <Conversion Old="PCNT" New="PCNT" />
+      <Conversion Old="POPM" New="POPM" />
+      <Conversion Old="POSS" New="POSS" />
+      <Conversion Old="TALB" New="TALB" />
+      <Conversion Old="TBPM" New="TBPM" />
+      <Conversion Old="TCOM" New="TCOM" />
+      <Conversion Old="TCON" New="TCON" />
+      <Conversion Old="TCOP" New="TCOP" />
+      <Conversion Old="TDAT" New="TDRC" />
+      <Conversion Old="TDLY" New="TDLY" />
+      <Conversion Old="TENC" New="TENC" />
+      <Conversion Old="TEXT" New="TEXT" />
+      <Conversion Old="TFLT" New="TFLT" />
+      <Conversion Old="TIPL" New="TIME" />
+      <Conversion Old="TIT1" New="TIT1" />
+      <Conversion Old="TIT2" New="TIT2" />
+      <Conversion Old="TIT3" New="TIT3" />
+      <Conversion Old="TKEY" New="TKEY" />
+      <Conversion Old="TLAN" New="TLAN" />
+      <Conversion Old="TLEN" New="TLEN" />
+      <Conversion Old="TMED" New="TMED" />
+      <Conversion Old="TOAL" New="TOAL" />
+      <Conversion Old="TOFN" New="TOFN" />
+      <Conversion Old="TOLY" New="TOLY" />
+      <Conversion Old="TOPE" New="TOPE" />
+      <Conversion Old="TOWN" New="TOWN" />
+      <Conversion Old="TPE1" New="TPE1" />
+      <Conversion Old="TPE2" New="TPE2" />
+      <Conversion Old="TPE3" New="TPE3" />
+      <Conversion Old="TPE4" New="TPE4" />
+      <Conversion Old="TPOS" New="TPOS" />
+      <Conversion Old="TPRO" New="TPRO" />
+      <Conversion Old="TPUB" New="TPUB" />
+      <Conversion Old="TRCK" New="TRCK" />
+      <Conversion Old="TRSN" New="TRSN" />
+      <Conversion Old="TRSO" New="TRSO" />
+      <Conversion Old="TSOA" New="TSOA" />
+      <Conversion Old="TSOP" New="TSOP" />
+      <Conversion Old="TSOT" New="TSOT" />
+      <Conversion Old="TSRC" New="TSRC" />
+      <Conversion Old="TSSE" New="TSSE" />
+      <Conversion Old="TYER" New="TDRC" />
+      <Conversion Old="TXXX" New="TXXX" />
+      <Conversion Old="UFID" New="UFID" />
+      <Conversion Old="USER" New="USER" />
+      <Conversion Old="USLT" New="USLT" />
+      <Conversion Old="WCOM" New="WCOM" />
+      <Conversion Old="WCOP" New="WCOP" />
+      <Conversion Old="WOAF" New="WOAF" />
+      <Conversion Old="WOAR" New="WOAR" />
+      <Conversion Old="WOAS" New="WOAS" />
+      <Conversion Old="WORS" New="WORS" />
+      <Conversion Old="WPAY" New="WPAY" />
+      <Conversion Old="WPUB" New="WPUB" />
+      <Conversion Old="WXXX" New="WXXX" />
+    </Conversions>
+    <TextCodecs>
+      <TextCodec Name="Iso88591" Class="ID3.Codec.TextEncoderISO_8859_1" />
+      <TextCodec Name="Ucs2WithBom" Preferred="True" Class="ID3.Codec.TextEncoderUnicodeUcs2" />
+      <TextCodec Name="CodecUtf16BigEndian" Class="" Remark="NonStandard"/>
+      <TextCodec Name="CodecUtf8" Class="ID3.Codec.TextEncoderUnicodeUtf8" Remark="NonStandard"/>
+    </TextCodecs>
+  </Version>
+  <Version Major="4" Minor="0">
+    <Classes Tag="ID3.Tag" TagCodec="ID3.Codec.TagCodecV2" Frame="ID3.Frame" FrameCodec="ID3.Codec.FrameCodec2_4" />
+    <ContentClasses>
+      <ContentClass Type="Text" Class="ID3.FrameContentText" />
+      <ContentClass Type="UserText" Class="ID3.FrameContentUserText" />
+      <ContentClass Type="Comment" Class="ID3.FrameContentComment" />
+      <ContentClass Type="Picture" Class="ID3.FrameContentPicture" />
+      <ContentClass Type="URL" Class="ID3.FrameContentUrlLink" />
+      <ContentClass Type="UserURL" Class="ID3.FrameContentUserUrlLink" />
+      <ContentClass Type="StringList" Class="ID3.FrameContentTextList" />
+    </ContentClasses>
+    <Frames>
+      <Frame Id="AENC" Description="Audio encryption" Category="Standard" Type="Binary" />
+      <Frame Id="APIC" Description="Attached picture" ShortDescription="Picture" Category="Standard" Type="Picture" Meaning="Picture" />
+      <Frame Id="ASPI" Description="Audio seek point index" Category="Standard" Type="Binary" />
+      <Frame Id="COMM" Description="Comments" Category="Standard" Type="Comment" Meaning="Comment" />
+      <Frame Id="COMR" Description="Commercial frame" Category="Standard" Type="Binary" />
+      <Frame Id="ENCR" Description="Encryption method registration" Category="Standard" Type="Binary" />
+      <Frame Id="EQU2" Description="Equalization" Category="Standard" Type="Binary" />
+      <Frame Id="ETCO" Description="Event timing codes" Category="Standard" Type="Binary" />
+      <Frame Id="GEOB" Description="General encapsulated object" Category="Standard" Type="Binary" />
+      <Frame Id="GRID" Description="Group identification registration" Category="Standard" Type="Binary" />
+      <Frame Id="LINK" Description="Linked information" Category="Standard" Type="Binary" />
+      <Frame Id="MCDI" Description="Music CD identifier" Category="Standard" Type="Binary" Meaning="MusicCdIdentifier" />
+      <Frame Id="MLLT" Description="MPEG location lookup table" Category="Standard" Type="Binary" />
+      <Frame Id="OWNE" Description="Ownership frame" Category="Standard" Type="Binary" />
+      <Frame Id="PRIV" Description="Private frame" Category="Standard" Type="Binary" />
+      <Frame Id="PCNT" Description="Play counter" Category="Standard" Type="Binary" />
+      <Frame Id="POPM" Description="Popularimeter" Category="Standard" Type="Binary" />
+      <Frame Id="POSS" Description="Position synchronisation frame" Category="Standard" Type="Binary" />
+      <Frame Id="RBUF" Description="Recommended buffer size" Category="Standard" Type="Binary" />
+      <Frame Id="RVA2" Description="Relative volume adjustment" Category="Standard" Type="Binary" />
+      <Frame Id="RVRB" Description="Reverb" Category="Standard" Type="Binary" />
+      <Frame Id="SEEK" Description="Seek frame" Category="Standard" Type="Binary" />
+      <Frame Id="SIGN" Description="Signature frame" Category="Standard" Type="Binary" />
+      <Frame Id="SYLT" Description="Synchronized lyric/text" Category="Standard" Type="Binary" />
+      <Frame Id="SYTC" Description="Synchronized tempo codes" Category="Standard" Type="Binary" />
+      <Frame Id="TALB" Description="Album/Movie/Show title" ShortDescription="Album" Category="Standard" Type="Text" Meaning="Album" />
+      <Frame Id="TBPM" Description="BPM (beats per minute)" ShortDescription="BPM" Category="Standard" Type="Text" />
+      <Frame Id="TCOM" Description="Composer" Category="Standard" Type="Text" Meaning="Composer" />
+      <Frame Id="TCON" Description="Content type" Category="Standard" Type="Text" Meaning="ContentType" />
+      <Frame Id="TCOP" Description="Copyright message" Category="Standard" Type="Text" />
+      <Frame Id="TDEN" Description="Encoding time" Category="Standard" Type="Text" />
+      <Frame Id="TDLY" Description="Playlist delay" Category="Standard" Type="Text" />
+      <Frame Id="TDOR" Description="Original release time" Category="Standard" Type="Text" />
+      <Frame Id="TDRC" Description="Recording time" Category="Standard" Type="Text" Meaning="ReleaseYear" />
+      <Frame Id="TDRL" Description="Release time" Category="Standard" Type="Text" />
+      <Frame Id="TDTG" Description="Tagging time" Category="Standard" Type="Text" />
+      <Frame Id="TENC" Description="Encoded by" Category="Standard" Type="Text" Meaning="Encoder" />
+      <Frame Id="TEXT" Description="Lyricist/Text writer" Category="Standard" Type="Text" />
+      <Frame Id="TFLT" Description="File type" Category="Standard" Type="Text" />
+      <Frame Id="TIME" Description="Time" Category="Standard" Type="Text" />
+      <Frame Id="TIT1" Description="Content group description" ShortDescription="Content group" Category="Standard" Type="Text" />
+      <Frame Id="TIT2" Description="Title/songname/content description" ShortDescription="Title" Category="Standard" Type="Text" Meaning="Title" />
+      <Frame Id="TIT3" Description="Subtitle/Description refinement" ShortDescription="Subtitle" Category="Standard" Type="Text" />
+      <Frame Id="TKEY" Description="Initial key" Category="Standard" Type="Text" />
+      <Frame Id="TLAN" Description="Language(s)" Category="Standard" Type="Text" />
+      <Frame Id="TLEN" Description="Length" Category="Standard" Type="Text" Meaning="LengthInMilliSeconds" />
+      <Frame Id="TMCL" Description="Musician credits list" ShortDescription="Musicians" Category="Standard" Type="StringList" />
+      <Frame Id="TIPL" Description="Involved people list" ShortDescription="Involved people" Category="Standard" Type="StringList" />
+      <Frame Id="TMED" Description="Media type" Category="Standard" Type="Text" />
+      <Frame Id="TMOO" Description="Mood" Category="Standard" Type="Text" />
+      <Frame Id="TOAL" Description="Original album/movie/show title" ShortDescription="Album" Category="Standard" Type="Text" />
+      <Frame Id="TOFN" Description="Original filename" Category="Standard" Type="Text" />
+      <Frame Id="TOLY" Description="Original lyricist(s)/text writer(s)" Category="Standard" Type="Text" />
+      <Frame Id="TOPE" Description="Original artist(s)/performer(s)" Category="Standard" Type="Text" />
+      <Frame Id="TOWN" Description="File owner/licensee" Category="Standard" Type="Text" />
+      <Frame Id="TPE1" Description="Lead performer(s)/Soloist(s)" ShortDescription="Artist" Category="Standard" Type="Text" Meaning="Artist" />
+      <Frame Id="TPE2" Description="Band/orchestra/accompaniment" ShortDescription="Band" Category="Standard" Type="Text" Meaning="BandOrchestraAccompaniment" />
+      <Frame Id="TPE3" Description="Conductor/performer refinement" ShortDescription="Performer" Category="Standard" Type="Text" Meaning="ConductorPerformer" />
+      <Frame Id="TPE4" Description="Interpreted, remixed, or otherwise modified by" ShortDescription="Remixer" Category="Standard" Type="Text" Meaning="InterpretedRemixedModified" />
+      <Frame Id="TPOS" Description="Part of a set" Category="Standard" Type="Text" Meaning="PartOfSet" />
+      <Frame Id="TPRO" Description="Produced notice" Category="Standard" Type="Text" />
+      <Frame Id="TPUB" Description="Publisher" Category="Standard" Type="Text" Meaning="Publisher" />
+      <Frame Id="TRCK" Description="Track number/Position in set" ShortDescription="Track number" Category="Standard" Type="Text" Meaning="TrackNumber" />
+      <Frame Id="TRSN" Description="Internet radio station name" Category="Standard" Type="Text" />
+      <Frame Id="TRSO" Description="Internet radio station owner" Category="Standard" Type="Text" />
+      <Frame Id="TSOA" Description="Album sort order" Category="Standard" Type="Text" />
+      <Frame Id="TSOP" Description="Performer sort order" Category="Standard" Type="Text" />
+      <Frame Id="TSOT" Description="Title sort order" Category="Standard" Type="Text" />
+      <Frame Id="TSRC" Description="ISRC (international Standard recording code)" Category="Standard" Type="Text" />
+      <Frame Id="TSSE" Description="Software/Hardware and settings used for encoding" Category="Standard" Type="Text" />
+      <Frame Id="TXXX" Description="User defined text information frame" ShortDescription="User text" Category="Standard" Type="UserText" />
+      <Frame Id="UFID" Description="Unique file identifier" Category="Standard" Type="Binary" />
+      <Frame Id="USER" Description="Terms of use" Category="Standard" Type="Binary" />
+      <Frame Id="USLT" Description="Unsychronized lyric/text transcription" Category="Standard" Type="Binary" />
+      <Frame Id="WCOM" Description="Commercial information" Category="Standard" Type="URL" />
+      <Frame Id="WCOP" Description="Copyright/Legal information" Category="Standard" Type="URL" />
+      <Frame Id="WOAF" Description="Official audio file webpage" Category="Standard" Type="URL" />
+      <Frame Id="WOAR" Description="Official artist/performer webpage" Category="Standard" Type="URL" />
+      <Frame Id="WOAS" Description="Official audio source webpage" Category="Standard" Type="URL" />
+      <Frame Id="WORS" Description="Official internet radio station homepage" Category="Standard" Type="URL" />
+      <Frame Id="WPAY" Description="Payment" Category="Standard" Type="URL" />
+      <Frame Id="WPUB" Description="Publishers official webpage" Category="Standard" Type="URL" />
+      <Frame Id="WXXX" Description="User defined URL link frame" Category="Standard" Type="UserURL" />
+      <Frame Id="NCON" Description="Non-Standard NCON frame: http://www.id3.org/Compliance_Issues" Category="NonStandard" Type="Binary" />
+      <Frame Id="TCMP" Description="Non-Standard TCMP frame: http://www.id3.org/Compliance_Issues" Category="NonStandard" Type="Binary" />
+      <Frame Id="TT22" Description="Non-Standard TT22 frame (Beats per minute)" Category="NonStandard" Type="Binary" />
+      <Frame Id="TCP " Description="Non-Standard TCP frame: https://svn.liip.ch/repos/public/fluxcms/trunk/inc/MP3/Id.php" Category="NonStandard" Type="Binary" />
+      <Frame Id="TCP" Description="Non-Standard TCP frame: https://svn.liip.ch/repos/public/fluxcms/trunk/inc/MP3/Id.php" Category="NonStandard" Type="Binary" />
+      <Frame Id="PRV " Description="Non-Standard PRV frame: https://svn.liip.ch/repos/public/fluxcms/trunk/inc/MP3/Id.php" Category="NonStandard" Type="Binary" />
+      <Frame Id="PCST" Description="Non-Standard PCST frame" Category="NonStandard" Type="Binary" />
+      <Frame Id="COM " Description="Non-Standard COM frame" Category="NonStandard" Type="Binary" />
+      <Frame Id="TYER" Description="Non-Standard Year Year from 2.3" Category="NonStandard" Type="Binary" />
+    </Frames>
+    <InvalidFrameIds>
+      <InvalidFrameId Value="MP3e" />
+    </InvalidFrameIds>
+    <TextCodecs>
+      <TextCodec Name="Iso88591" Class="ID3.Codec.TextEncoderISO_8859_1" />
+      <TextCodec Name="Utf16WithBom" Class="ID3.Codec.TextEncoderUnicodeUcs2" />
+      <TextCodec Name="Utf16BigEndian" Class="" />
+      <TextCodec Name="Utf8" Preferred="True" Class="ID3.Codec.TextEncoderUnicodeUtf8" />
+    </TextCodecs>
+  </Version>
+</TagDescriptions>

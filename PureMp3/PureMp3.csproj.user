@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>ftp://ftp.mroc.de/downloads/puremp3/|C:\Users\MRoc\Desktop\PureMp3Beta\|C:\Users\MRoc\Desktop\PureMp3\|C:\Users\MRoc\Desktop\ID3LibTagger\|publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://www.mroc.de/downloads/puremp3/</InstallUrlHistory>
+    <SupportUrlHistory>http://www.mroc.de/puremp3|http://www.mroc.de</SupportUrlHistory>
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+    <ProjectView>ProjectFiles</ProjectView>
+  </PropertyGroup>
+</Project>
